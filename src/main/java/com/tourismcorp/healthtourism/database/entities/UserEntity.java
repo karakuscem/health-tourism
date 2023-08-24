@@ -1,6 +1,6 @@
 package com.tourismcorp.healthtourism.database.entities;
 
-import com.tourismcorp.healthtourism.util.BaseEntity;
+import com.tourismcorp.healthtourism.util.BaseUserEntity;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -11,7 +11,7 @@ import java.util.Set;
 @Data
 @Entity
 @Table
-public class UserEntity extends BaseEntity {
+public class UserEntity extends BaseUserEntity {
 
     @Column
     private String username;

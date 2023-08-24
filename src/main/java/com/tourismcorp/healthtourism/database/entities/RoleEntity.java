@@ -1,6 +1,7 @@
 package com.tourismcorp.healthtourism.database.entities;
 
 import com.tourismcorp.healthtourism.util.BaseEntity;
+import com.tourismcorp.healthtourism.util.BaseUserEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToMany;
@@ -12,7 +13,7 @@ import java.util.Set;
 @Entity
 @Data
 @Table
-public class RoleEntity extends BaseEntity {
+public class RoleEntity<T extends BaseUserEntity> extends BaseEntity {
     @Column(unique = true)
     private String name;
 
@@ -20,6 +21,6 @@ public class RoleEntity extends BaseEntity {
     private String description;
 
     @ManyToMany(mappedBy = "roles")
-    private Set<UserEntity> users;
+    private Set<T> users;
 
 }
