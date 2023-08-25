@@ -1,14 +1,14 @@
 package com.tourismcorp.healthtourism.model.requestDTO;
 
+import com.tourismcorp.healthtourism.model.UserDTO;
 import com.tourismcorp.healthtourism.util.BaseDTO;
-import com.tourismcorp.healthtourism.util.BaseUserDTO;
 import lombok.Data;
 
 import java.util.Set;
 
 
 @Data
-public class RoleRequestDTO<T extends BaseUserDTO> extends BaseDTO {
+public class RoleRequestDTO extends BaseDTO {
 
     private String name;
 
@@ -16,6 +16,6 @@ public class RoleRequestDTO<T extends BaseUserDTO> extends BaseDTO {
     private String description;
 
 
-    private Set<T> users;
+    private Set<UserDTO> users;
 
 }
