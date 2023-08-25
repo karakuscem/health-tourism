@@ -7,6 +7,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -26,7 +27,7 @@ public class FlightEntity extends BaseEntity {
     @Column
     private Date date;
     @Column
-    private int price;
+    private BigDecimal price;
 
     @OneToMany(mappedBy = "flight")
     private List<SeatEntity> seat;
