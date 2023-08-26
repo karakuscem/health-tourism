@@ -13,7 +13,6 @@ import java.util.List;
 @Component
 public class AppointmentMapper implements IBaseMapper<AppointmentEntity, AppointmentDTO, AppointmentRequestDTO> {
 
-    private final DateMapper dateMapper;
     private final DoctorMapper doctorMapper;
     private final UserMapper userMapper;
     private final HospitalMapper hospitalMapper;
@@ -23,10 +22,9 @@ public class AppointmentMapper implements IBaseMapper<AppointmentEntity, Appoint
     private final SeatMapper seatMapper;
 
     @Autowired
-    protected AppointmentMapper(DateMapper dateMapper, DoctorMapper doctorMapper, UserMapper userMapper,
+    protected AppointmentMapper(DoctorMapper doctorMapper, UserMapper userMapper,
                                 HospitalMapper hospitalMapper, HotelMapper hotelMapper,
                                 FlightMapper flightMapper, RoomMapper roomMapper, SeatMapper seatMapper) {
-        this.dateMapper = dateMapper;
         this.doctorMapper = doctorMapper;
         this.userMapper = userMapper;
         this.hospitalMapper = hospitalMapper;
@@ -43,16 +41,16 @@ public class AppointmentMapper implements IBaseMapper<AppointmentEntity, Appoint
         dto.setUuid(entity.getUuid());
         dto.setCreationDate(entity.getCreationDate());
         dto.setUpdatedDate(entity.getUpdatedDate());
-        dto.setDate(dateMapper.entityToDTO(entity.getDate()));
+        dto.setDate(entity.getDate());
         dto.setDoctor(doctorMapper.entityToDTO(entity.getDoctor()));
         dto.setPatient(userMapper.entityToDTO(entity.getPatient()));
         dto.setHospital(hospitalMapper.entityToDTO(entity.getHospital()));
         dto.setHotel(hotelMapper.entityToDTO(entity.getHotel()));
         dto.setFlight(flightMapper.entityToDTO(entity.getFlight()));
         dto.setRoom(roomMapper.entityToDTO(entity.getRoom()));
-        dto.setRoomDate(dateMapper.entityToDTO(entity.getRoomDate()));
+        dto.setRoomDate(entity.getRoomDate());
         dto.setSeat(seatMapper.entityToDTO(entity.getSeat()));
-        dto.setFlightDate(dateMapper.entityToDTO(entity.getFlightDate()));
+        dto.setFlightDate(entity.getFlightDate());
 
         return dto;
     }
@@ -64,16 +62,16 @@ public class AppointmentMapper implements IBaseMapper<AppointmentEntity, Appoint
         entity.setUuid(dto.getUuid());
         entity.setCreationDate(dto.getCreationDate());
         entity.setUpdatedDate(dto.getUpdatedDate());
-        entity.setDate(dateMapper.dtoToEntity(dto.getDate()));
+        entity.setDate(dto.getDate());
         entity.setDoctor(doctorMapper.dtoToEntity(dto.getDoctor()));
         entity.setPatient(userMapper.dtoToEntity(dto.getPatient()));
         entity.setHospital(hospitalMapper.dtoToEntity(dto.getHospital()));
         entity.setHotel(hotelMapper.dtoToEntity(dto.getHotel()));
         entity.setFlight(flightMapper.dtoToEntity(dto.getFlight()));
         entity.setRoom(roomMapper.dtoToEntity(dto.getRoom()));
-        entity.setRoomDate(dateMapper.dtoToEntity(dto.getRoomDate()));
+        entity.setRoomDate(dto.getRoomDate());
         entity.setSeat(seatMapper.dtoToEntity(dto.getSeat()));
-        entity.setFlightDate(dateMapper.dtoToEntity(dto.getFlightDate()));
+        entity.setFlightDate(dto.getFlightDate());
 
         return entity;
     }
@@ -103,16 +101,16 @@ public class AppointmentMapper implements IBaseMapper<AppointmentEntity, Appoint
         entity.setUuid(requestDTO.getUuid());
         entity.setCreationDate(requestDTO.getCreationDate());
         entity.setUpdatedDate(requestDTO.getUpdatedDate());
-        entity.setDate(dateMapper.requestDTOToEntity(requestDTO.getDate()));
+        entity.setDate(requestDTO.getDate());
         entity.setDoctor(doctorMapper.requestDTOToEntity(requestDTO.getDoctor()));
         entity.setPatient(userMapper.requestDTOToEntity(requestDTO.getPatient()));
         entity.setHospital(hospitalMapper.requestDTOToEntity(requestDTO.getHospital()));
         entity.setHotel(hotelMapper.requestDTOToEntity(requestDTO.getHotel()));
         entity.setFlight(flightMapper.requestDTOToEntity(requestDTO.getFlight()));
         entity.setRoom(roomMapper.requestDTOToEntity(requestDTO.getRoom()));
-        entity.setRoomDate(dateMapper.requestDTOToEntity(requestDTO.getRoomDate()));
+        entity.setRoomDate(requestDTO.getRoomDate());
         entity.setSeat(seatMapper.requestDTOToEntity(requestDTO.getSeat()));
-        entity.setFlightDate(dateMapper.requestDTOToEntity(requestDTO.getFlightDate()));
+        entity.setFlightDate(requestDTO.getFlightDate());
 
 
         return entity;
@@ -130,7 +128,7 @@ public class AppointmentMapper implements IBaseMapper<AppointmentEntity, Appoint
     @Override
     public AppointmentEntity requestDTOToExistEntity(AppointmentRequestDTO requestDTO, AppointmentEntity entity) {
         if (requestDTO.getDate() != null)
-            entity.setDate(dateMapper.requestDTOToEntity(requestDTO.getDate()));
+            entity.setDate(requestDTO.getDate());
         if (requestDTO.getDoctor() != null)
             entity.setDoctor(doctorMapper.requestDTOToEntity(requestDTO.getDoctor()));
         if (requestDTO.getPatient() != null)
@@ -144,11 +142,11 @@ public class AppointmentMapper implements IBaseMapper<AppointmentEntity, Appoint
         if (requestDTO.getRoom() != null)
             entity.setRoom(roomMapper.requestDTOToEntity(requestDTO.getRoom()));
         if (requestDTO.getRoomDate() != null)
-            entity.setRoomDate(dateMapper.requestDTOToEntity(requestDTO.getRoomDate()));
+            entity.setRoomDate(requestDTO.getRoomDate());
         if (requestDTO.getSeat() != null)
             entity.setSeat(seatMapper.requestDTOToEntity(requestDTO.getSeat()));
         if (requestDTO.getFlightDate() != null)
-            entity.setFlightDate(dateMapper.requestDTOToEntity(requestDTO.getFlightDate()));
+            entity.setFlightDate(requestDTO.getFlightDate());
 
 
         return entity;

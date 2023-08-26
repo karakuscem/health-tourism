@@ -5,13 +5,14 @@ import com.tourismcorp.healthtourism.model.AirlineCompanyDTO;
 import com.tourismcorp.healthtourism.model.requestDTO.AirlineCompanyRequestDTO;
 import com.tourismcorp.healthtourism.util.IBaseMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public abstract class AirlineCompanyMapper implements IBaseMapper<AirlineCompanyEntity,
+public class AirlineCompanyMapper implements IBaseMapper<AirlineCompanyEntity,
         AirlineCompanyDTO, AirlineCompanyRequestDTO> {
 
     private final FlightMapper flightMapper;

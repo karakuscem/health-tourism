@@ -24,6 +24,6 @@ public class HotelEntity extends BaseEntity {
     private List<RoomEntity> room;
 
     @OneToOne
-    private BankAccountEntity bankAccount;
+    private BankAccountEntity bankAccount = null;
 
 }

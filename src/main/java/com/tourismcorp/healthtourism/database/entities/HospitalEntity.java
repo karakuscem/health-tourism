@@ -21,5 +21,5 @@ public class HospitalEntity extends BaseEntity {
     private List<DoctorEntity> doctor;
 
     @OneToOne
-    private BankAccountEntity bankAccount;
+    private BankAccountEntity bankAccount = null;
 }

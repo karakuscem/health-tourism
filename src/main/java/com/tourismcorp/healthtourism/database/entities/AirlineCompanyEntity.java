@@ -22,5 +22,5 @@ public class AirlineCompanyEntity extends BaseEntity {
     private List<FlightEntity> flight;
 
     @ManyToOne
-    private BankAccountEntity bankAccount;
+    private BankAccountEntity bankAccount = null;
 }

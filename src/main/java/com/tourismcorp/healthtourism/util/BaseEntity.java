@@ -1,5 +1,7 @@
 package com.tourismcorp.healthtourism.util;
 
+import com.tourismcorp.healthtourism.database.entities.RoleEntity;
+import com.tourismcorp.healthtourism.database.entities.UserEntity;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
@@ -9,12 +11,13 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.sql.Types;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.UUID;
 
+@MappedSuperclass
 @Data
 @EntityListeners({AuditingEntityListener.class})
-@MappedSuperclass
 public class BaseEntity {
 
     @Id
@@ -36,6 +39,5 @@ public class BaseEntity {
     protected void onCreate() {
         setUuid(UUID.randomUUID());
     }
-
 
 }

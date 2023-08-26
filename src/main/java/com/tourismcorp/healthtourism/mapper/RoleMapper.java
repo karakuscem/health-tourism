@@ -5,6 +5,7 @@ import com.tourismcorp.healthtourism.model.RoleDTO;
 import com.tourismcorp.healthtourism.model.requestDTO.RoleRequestDTO;
 import com.tourismcorp.healthtourism.util.IBaseMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -13,10 +14,11 @@ import java.util.List;
 @Component
 public class RoleMapper implements IBaseMapper<RoleEntity, RoleDTO, RoleRequestDTO> {
 
+    @Lazy
     private final UserMapper userMapper;
 
     @Autowired
-    protected RoleMapper(UserMapper userMapper) {
+    protected RoleMapper(@Lazy UserMapper userMapper) {
         this.userMapper = userMapper;
     }
 

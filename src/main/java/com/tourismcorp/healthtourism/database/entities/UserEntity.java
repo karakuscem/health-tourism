@@ -32,9 +32,10 @@ public class UserEntity extends BaseEntity {
     @ManyToMany(fetch = FetchType.LAZY)
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
-    @JoinColumn(name = "role_id", nullable = false)
+    @JoinColumn(name = "role_id")
     private List<RoleEntity> roles;
 
     @OneToOne
-    private BankAccountEntity bankAccount;
+    private BankAccountEntity bankAccount = null;
+
 }

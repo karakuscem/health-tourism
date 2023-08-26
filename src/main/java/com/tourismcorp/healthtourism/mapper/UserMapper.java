@@ -5,6 +5,7 @@ import com.tourismcorp.healthtourism.model.UserDTO;
 import com.tourismcorp.healthtourism.model.requestDTO.UserRequestDTO;
 import com.tourismcorp.healthtourism.util.IBaseMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ public class UserMapper implements IBaseMapper<UserEntity, UserDTO, UserRequestD
     private final BankAccountMapper bankAccountMapper;
 
     @Autowired
-    protected UserMapper(RoleMapper roleMapper, BankAccountMapper bankAccountMapper) {
+    protected UserMapper(@Lazy RoleMapper roleMapper, BankAccountMapper bankAccountMapper) {
         this.roleMapper = roleMapper;
         this.bankAccountMapper = bankAccountMapper;
     }
@@ -95,6 +96,8 @@ public class UserMapper implements IBaseMapper<UserEntity, UserDTO, UserRequestD
     @Override
     public List<UserEntity> requestDTOListToEntityList(List<UserRequestDTO> dtoList) {
         List<UserEntity> userEntityList = new ArrayList<>();
+        if (dtoList == null)
+            return userEntityList;
         for (UserRequestDTO dto : dtoList) {
             UserEntity entity = requestDTOToEntity(dto);
             userEntityList.add(entity);

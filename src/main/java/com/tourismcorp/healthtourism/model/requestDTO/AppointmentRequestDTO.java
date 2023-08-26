@@ -4,18 +4,20 @@ import com.tourismcorp.healthtourism.model.*;
 import com.tourismcorp.healthtourism.util.BaseDTO;
 import lombok.Data;
 
+import java.util.Date;
+
 @Data
 
 public class AppointmentRequestDTO extends BaseDTO {
     private DoctorRequestDTO doctor;
     private UserRequestDTO patient;
-    private DateRequestDTO date;
+    private Date date;
     private HotelRequestDTO hotel;
     private RoomRequestDTO room;
-    private DateRequestDTO roomDate;
+    private Date roomDate;
     private HospitalRequestDTO hospital;
     private FlightRequestDTO flight;
     private SeatRequestDTO seat;
-    private DateRequestDTO flightDate;
+    private Date flightDate;
 
 }

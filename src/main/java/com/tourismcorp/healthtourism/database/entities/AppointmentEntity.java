@@ -4,6 +4,8 @@ import com.tourismcorp.healthtourism.util.BaseEntity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.Date;
+
 @Data
 @Entity
 @Table
@@ -17,9 +19,8 @@ public class AppointmentEntity extends BaseEntity {
     @JoinColumn(name = "patient_entity_id", nullable = false)
     private UserEntity patient;
 
-    @ManyToOne
-    @JoinColumn(name = "doctor_date_entity_id", nullable = false)
-    private DateEntity date;
+    @Column
+    private Date date;
 
     @ManyToOne
     @JoinColumn(name = "hotel_entity_id", nullable = false)
@@ -29,9 +30,8 @@ public class AppointmentEntity extends BaseEntity {
     @JoinColumn(name = "room_entity_id", nullable = false)
     private RoomEntity room;
 
-    @ManyToOne
-    @JoinColumn(name = "room_date_entity_id", nullable = false)
-    private DateEntity roomDate;
+    @Column
+    private Date roomDate;
 
     @ManyToOne
     @JoinColumn(name = "hospital_entity_id", nullable = false)
@@ -45,7 +45,6 @@ public class AppointmentEntity extends BaseEntity {
     @JoinColumn(name = "seat_entity_id", nullable = false)
     private SeatEntity seat;
 
-    @ManyToOne
-    @JoinColumn(name = "flight_date_entity_id", nullable = false)
-    private DateEntity flightDate;
+    @Column
+    private Date flightDate;
 }

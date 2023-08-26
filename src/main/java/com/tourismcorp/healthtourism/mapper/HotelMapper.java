@@ -5,6 +5,7 @@ import com.tourismcorp.healthtourism.model.HotelDTO;
 import com.tourismcorp.healthtourism.model.requestDTO.HotelRequestDTO;
 import com.tourismcorp.healthtourism.util.IBaseMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ public class HotelMapper implements IBaseMapper<HotelEntity, HotelDTO, HotelRequ
     private final BankAccountMapper bankAccountMapper;
 
     @Autowired
-    protected HotelMapper(RoomMapper roomMapper, BankAccountMapper bankAccountMapper) {
+    protected HotelMapper(@Lazy RoomMapper roomMapper, BankAccountMapper bankAccountMapper) {
         this.roomMapper = roomMapper;
         this.bankAccountMapper = bankAccountMapper;
     }

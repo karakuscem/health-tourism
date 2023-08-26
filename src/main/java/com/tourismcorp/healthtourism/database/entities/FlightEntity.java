@@ -1,10 +1,7 @@
 package com.tourismcorp.healthtourism.database.entities;
 
 import com.tourismcorp.healthtourism.util.BaseEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -31,4 +28,7 @@ public class FlightEntity extends BaseEntity {
 
     @OneToMany(mappedBy = "flight")
     private List<SeatEntity> seat;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private AirlineCompanyEntity airlineCompany;
 }

@@ -5,6 +5,7 @@ import com.tourismcorp.healthtourism.model.DoctorDTO;
 import com.tourismcorp.healthtourism.model.requestDTO.DoctorRequestDTO;
 import com.tourismcorp.healthtourism.util.IBaseMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ public class DoctorMapper implements IBaseMapper<DoctorEntity, DoctorDTO, Doctor
     private final HospitalMapper hospitalMapper;
 
     @Autowired
-    protected DoctorMapper(RoleMapper roleMapper, HospitalMapper hospitalMapper) {
+    protected DoctorMapper(RoleMapper roleMapper,@Lazy HospitalMapper hospitalMapper) {
         this.roleMapper = roleMapper;
         this.hospitalMapper = hospitalMapper;
     }

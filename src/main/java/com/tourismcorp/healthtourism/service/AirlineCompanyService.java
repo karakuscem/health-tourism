@@ -17,11 +17,15 @@ public class AirlineCompanyService extends BaseService<
         AirlineCompanyMapper,
         AirlineCompanyRepository> {
 
-    @Autowired
-    AirlineCompanyRepository airlineCompanyRepository;
+    private final AirlineCompanyRepository airlineCompanyRepository;
+
+    private final AirlineCompanyMapper airlineCompanyMapper;
 
     @Autowired
-    AirlineCompanyMapper airlineCompanyMapper;
+    public AirlineCompanyService(AirlineCompanyRepository airlineCompanyRepository, AirlineCompanyMapper airlineCompanyMapper) {
+        this.airlineCompanyRepository = airlineCompanyRepository;
+        this.airlineCompanyMapper = airlineCompanyMapper;
+    }
 
 
     @Override

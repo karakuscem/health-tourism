@@ -1,5 +1,8 @@
 package com.tourismcorp.healthtourism.util;
 
+import jakarta.transaction.Transactional;
+import org.springframework.data.jpa.repository.Modifying;
+
 import java.util.List;
 import java.util.UUID;
 
@@ -20,8 +23,10 @@ public abstract class BaseService<
         return getMapper().entityToDTO(entity);
     }
 
-    public DTO update(Long id, RequestDTO requestDTO) {
-        Entity entity = getRepository().findById(id).orElse(null);
+    @Modifying
+    @Transactional
+    public DTO update(UUID uuid, RequestDTO requestDTO) {
+        Entity entity = getRepository().findByUuid(uuid).orElse(null);
         if (entity != null) {
             entity = getMapper().requestDTOToExistEntity(requestDTO, entity);
             getRepository().save(entity);
@@ -32,7 +37,7 @@ public abstract class BaseService<
     }
 
     public DTO getByUUID(UUID uuid) {
-        Entity entity = getRepository().findByUUID(uuid).orElse(null);
+        Entity entity = getRepository().findByUuid(uuid).orElse(null);
         if (entity != null) {
             return getMapper().entityToDTO(entity);
         } else {
@@ -40,8 +45,10 @@ public abstract class BaseService<
         }
     }
 
+    @Modifying
+    @Transactional
     public DTO deleteByUUID(UUID uuid) {
-        Entity entity = getRepository().findByUUID(uuid).orElse(null);
+        Entity entity = getRepository().findByUuid(uuid).orElse(null);
         if (entity != null) {
             getRepository().delete(entity);
             return getMapper().entityToDTO(entity);

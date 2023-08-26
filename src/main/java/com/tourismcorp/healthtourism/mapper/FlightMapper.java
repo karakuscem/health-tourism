@@ -5,6 +5,7 @@ import com.tourismcorp.healthtourism.model.FlightDTO;
 import com.tourismcorp.healthtourism.model.requestDTO.FlightRequestDTO;
 import com.tourismcorp.healthtourism.util.IBaseMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -13,10 +14,11 @@ import java.util.List;
 @Component
 public class FlightMapper implements IBaseMapper<FlightEntity, FlightDTO, FlightRequestDTO> {
 
+
     private final SeatMapper seatMapper;
 
     @Autowired
-    public FlightMapper(SeatMapper seatMapper) {
+    public FlightMapper(@Lazy SeatMapper seatMapper) {
         this.seatMapper = seatMapper;
     }
 
