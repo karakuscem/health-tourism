@@ -10,6 +10,9 @@ public class HealthTourismApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(HealthTourismApplication.class, args);
+
+        // Null check for requestDTO mapper
+        // Delete function for all child classes
     }
 
 }

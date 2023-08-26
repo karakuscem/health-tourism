@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.util.List;
 import java.util.Set;
@@ -40,6 +42,7 @@ public class UserEntity extends BaseEntity {
     bank account when user is deleted and adding  nullbank account when user is added
      */
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.SET_NULL)
     private BankAccountEntity bankAccount;
 
 }

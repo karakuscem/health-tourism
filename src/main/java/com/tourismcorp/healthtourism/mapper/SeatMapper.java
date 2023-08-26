@@ -74,7 +74,6 @@ public class SeatMapper implements IBaseMapper<SeatEntity, SeatDTO, SeatRequestD
         seatEntity.setId(requestDTO.getId());
         seatEntity.setSeatNumber(requestDTO.getSeatNumber());
 
-
         return seatEntity;
     }
 

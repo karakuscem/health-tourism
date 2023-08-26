@@ -3,6 +3,8 @@ package com.tourismcorp.healthtourism.database.entities;
 import com.tourismcorp.healthtourism.util.BaseEntity;
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -26,7 +28,9 @@ public class FlightEntity extends BaseEntity {
     @Column
     private BigDecimal price;
 
-    @OneToMany(orphanRemoval = true)
+    @OneToMany
+    @JoinColumn(name = "flight_id")
+    @OnDelete(action = OnDeleteAction.SET_NULL)
     private List<SeatEntity> seat;
 
     @ManyToOne(fetch = FetchType.LAZY)

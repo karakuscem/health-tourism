@@ -4,6 +4,8 @@ import com.tourismcorp.healthtourism.util.BaseEntity;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.util.List;
 
@@ -23,5 +25,6 @@ public class AirlineCompanyEntity extends BaseEntity {
     private List<FlightEntity> flight;
 
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.SET_NULL)
     private BankAccountEntity bankAccount = null;
 }
