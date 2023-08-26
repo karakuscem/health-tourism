@@ -4,6 +4,7 @@ import com.tourismcorp.healthtourism.database.entities.AirlineCompanyEntity;
 import com.tourismcorp.healthtourism.model.AirlineCompanyDTO;
 import com.tourismcorp.healthtourism.model.requestDTO.AirlineCompanyRequestDTO;
 import com.tourismcorp.healthtourism.util.IBaseMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ public abstract class AirlineCompanyMapper implements IBaseMapper<AirlineCompany
     private final FlightMapper flightMapper;
     private final BankAccountMapper bankAccountMapper;
 
+    @Autowired
     protected AirlineCompanyMapper(FlightMapper flightMapper, BankAccountMapper bankAccountMapper) {
         this.flightMapper = flightMapper;
         this.bankAccountMapper = bankAccountMapper;

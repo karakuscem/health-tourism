@@ -4,6 +4,7 @@ import com.tourismcorp.healthtourism.database.entities.AvailableRoomDateEntity;
 import com.tourismcorp.healthtourism.model.AvailableRoomDateDTO;
 import com.tourismcorp.healthtourism.model.requestDTO.AvailableRoomDateRequestDTO;
 import com.tourismcorp.healthtourism.util.IBaseMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ public class AvailableRoomDateMapper implements IBaseMapper<AvailableRoomDateEnt
     private final RoomMapper roomMapper;
     private final DateMapper dateMapper;
 
+    @Autowired
     protected AvailableRoomDateMapper(RoomMapper roomMapper, DateMapper dateMapper) {
         this.roomMapper = roomMapper;
         this.dateMapper = dateMapper;

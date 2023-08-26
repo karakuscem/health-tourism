@@ -4,6 +4,7 @@ import com.tourismcorp.healthtourism.database.entities.RoomEntity;
 import com.tourismcorp.healthtourism.model.RoomDTO;
 import com.tourismcorp.healthtourism.model.requestDTO.RoomRequestDTO;
 import com.tourismcorp.healthtourism.util.IBaseMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ public class RoomMapper implements IBaseMapper<RoomEntity, RoomDTO, RoomRequestD
 
     private final HotelMapper hotelMapper;
 
+    @Autowired
     protected RoomMapper(HotelMapper hotelMapper) {
         this.hotelMapper = hotelMapper;
     }

@@ -4,6 +4,7 @@ import com.tourismcorp.healthtourism.database.entities.SeatEntity;
 import com.tourismcorp.healthtourism.model.SeatDTO;
 import com.tourismcorp.healthtourism.model.requestDTO.SeatRequestDTO;
 import com.tourismcorp.healthtourism.util.IBaseMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ public class SeatMapper implements IBaseMapper<SeatEntity, SeatDTO, SeatRequestD
 
     private final FlightMapper flightMapper;
 
+    @Autowired
     public SeatMapper(FlightMapper flightMapper) {
         this.flightMapper = flightMapper;
     }

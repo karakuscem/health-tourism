@@ -4,6 +4,7 @@ import com.tourismcorp.healthtourism.database.entities.PrescriptionEntity;
 import com.tourismcorp.healthtourism.model.PrescriptionDTO;
 import com.tourismcorp.healthtourism.model.requestDTO.PrescriptionRequestDTO;
 import com.tourismcorp.healthtourism.util.IBaseMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ public class PrescriptionMapper implements IBaseMapper<PrescriptionEntity, Presc
 
     private final DoctorMapper doctorMapper;
 
+    @Autowired
     protected PrescriptionMapper(DoctorMapper doctorMapper) {
         this.doctorMapper = doctorMapper;
     }

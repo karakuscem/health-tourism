@@ -4,6 +4,7 @@ import com.tourismcorp.healthtourism.database.entities.UserEntity;
 import com.tourismcorp.healthtourism.model.UserDTO;
 import com.tourismcorp.healthtourism.model.requestDTO.UserRequestDTO;
 import com.tourismcorp.healthtourism.util.IBaseMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ public class UserMapper implements IBaseMapper<UserEntity, UserDTO, UserRequestD
     private final RoleMapper roleMapper;
     private final BankAccountMapper bankAccountMapper;
 
+    @Autowired
     protected UserMapper(RoleMapper roleMapper, BankAccountMapper bankAccountMapper) {
         this.roleMapper = roleMapper;
         this.bankAccountMapper = bankAccountMapper;

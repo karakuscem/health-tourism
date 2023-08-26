@@ -4,6 +4,7 @@ import com.tourismcorp.healthtourism.database.entities.AvailableDoctorDateEntity
 import com.tourismcorp.healthtourism.model.AvailableDoctorDateDTO;
 import com.tourismcorp.healthtourism.model.requestDTO.AvailableDoctorDateRequestDTO;
 import com.tourismcorp.healthtourism.util.IBaseMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ public class AvailableDoctorDateMapper implements IBaseMapper<AvailableDoctorDat
     private final DoctorMapper doctorMapper;
     private final DateMapper dateMapper;
 
+    @Autowired
     protected AvailableDoctorDateMapper(DoctorMapper doctorMapper, DateMapper dateMapper) {
         this.doctorMapper = doctorMapper;
         this.dateMapper = dateMapper;

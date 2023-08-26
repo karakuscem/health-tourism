@@ -4,6 +4,7 @@ import com.tourismcorp.healthtourism.database.entities.AppointmentEntity;
 import com.tourismcorp.healthtourism.model.AppointmentDTO;
 import com.tourismcorp.healthtourism.model.requestDTO.AppointmentRequestDTO;
 import com.tourismcorp.healthtourism.util.IBaseMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -21,7 +22,7 @@ public class AppointmentMapper implements IBaseMapper<AppointmentEntity, Appoint
     private final RoomMapper roomMapper;
     private final SeatMapper seatMapper;
 
-
+    @Autowired
     protected AppointmentMapper(DateMapper dateMapper, DoctorMapper doctorMapper, UserMapper userMapper,
                                 HospitalMapper hospitalMapper, HotelMapper hotelMapper,
                                 FlightMapper flightMapper, RoomMapper roomMapper, SeatMapper seatMapper) {
