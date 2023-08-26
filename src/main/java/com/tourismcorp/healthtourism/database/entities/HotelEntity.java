@@ -23,7 +23,7 @@ public class HotelEntity extends BaseEntity {
     @OneToMany(mappedBy = "hotel")
     private List<RoomEntity> room;
 
-    @ManyToOne
+    @OneToOne
     private BankAccountEntity bankAccount;
 
 }

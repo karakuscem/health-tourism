@@ -12,6 +12,14 @@ import java.util.List;
 @Component
 public class AvailableDoctorDateMapper implements IBaseMapper<AvailableDoctorDateEntity,
         AvailableDoctorDateDTO, AvailableDoctorDateRequestDTO> {
+
+    private final DoctorMapper doctorMapper;
+    private final DateMapper dateMapper;
+
+    protected AvailableDoctorDateMapper(DoctorMapper doctorMapper, DateMapper dateMapper) {
+        this.doctorMapper = doctorMapper;
+        this.dateMapper = dateMapper;
+    }
     @Override
     public AvailableDoctorDateDTO entityToDTO(AvailableDoctorDateEntity entity) {
         AvailableDoctorDateDTO availableDoctorDateDTO = new AvailableDoctorDateDTO();
@@ -19,8 +27,8 @@ public class AvailableDoctorDateMapper implements IBaseMapper<AvailableDoctorDat
         availableDoctorDateDTO.setCreationDate(entity.getCreationDate());
         availableDoctorDateDTO.setUpdatedDate(entity.getUpdatedDate());
         availableDoctorDateDTO.setId(entity.getId());
-        //availableDoctorDateDTO.setDoctor(entity.getDoctor());
-        //availableDoctorDateDTO.setDate(entity.getDate());
+        availableDoctorDateDTO.setDoctor(doctorMapper.entityListToDTOList(entity.getDoctor()));
+        availableDoctorDateDTO.setDate(dateMapper.entityListToDTOList(entity.getDate()));
 
         return availableDoctorDateDTO;
     }
@@ -32,8 +40,8 @@ public class AvailableDoctorDateMapper implements IBaseMapper<AvailableDoctorDat
         availableDoctorDateEntity.setCreationDate(dto.getCreationDate());
         availableDoctorDateEntity.setUpdatedDate(dto.getUpdatedDate());
         availableDoctorDateEntity.setId(dto.getId());
-        //availableDoctorDateEntity.setDoctor(dto.getDoctor());
-        //availableDoctorDateEntity.setDate(dto.getDate());
+        availableDoctorDateEntity.setDoctor(doctorMapper.dtoListToEntityList(dto.getDoctor()));
+        availableDoctorDateEntity.setDate(dateMapper.dtoListToEntityList(dto.getDate()));
 
         return availableDoctorDateEntity;
     }
@@ -65,8 +73,8 @@ public class AvailableDoctorDateMapper implements IBaseMapper<AvailableDoctorDat
         availableDoctorDateEntity.setCreationDate(requestDTO.getCreationDate());
         availableDoctorDateEntity.setUpdatedDate(requestDTO.getUpdatedDate());
         availableDoctorDateEntity.setId(requestDTO.getId());
-        //availableDoctorDateEntity.setDoctor(requestDTO.getDoctor());
-        //availableDoctorDateEntity.setDate(requestDTO.getDate());
+        availableDoctorDateEntity.setDoctor(doctorMapper.requestDTOListToEntityList(requestDTO.getDoctor()));
+        availableDoctorDateEntity.setDate(dateMapper.requestDTOListToEntityList(requestDTO.getDate()));
 
         return availableDoctorDateEntity;
     }
@@ -84,12 +92,10 @@ public class AvailableDoctorDateMapper implements IBaseMapper<AvailableDoctorDat
     @Override
     public AvailableDoctorDateEntity requestDTOToExistEntity(AvailableDoctorDateRequestDTO requestDTO,
                                                              AvailableDoctorDateEntity entity) {
-        entity.setUuid(requestDTO.getUuid());
-        entity.setCreationDate(requestDTO.getCreationDate());
-        entity.setUpdatedDate(requestDTO.getUpdatedDate());
-        entity.setId(requestDTO.getId());
-        //entity.setDoctor(requestDTO.getDoctor());
-        //entity.setDate(requestDTO.getDate());
+        if (requestDTO.getDoctor() != null)
+            entity.setDoctor(doctorMapper.requestDTOListToEntityList(requestDTO.getDoctor()));
+        if (requestDTO.getDate() != null)
+          entity.setDate(dateMapper.requestDTOListToEntityList(requestDTO.getDate()));
 
         return entity;
     }

@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 public class PrescriptionRequestDTO extends BaseDTO {
 
-    private DoctorDTO doctor;
+    private DoctorRequestDTO doctor;
 
     private String prescription;
 

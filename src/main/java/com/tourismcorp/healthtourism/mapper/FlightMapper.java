@@ -11,6 +11,13 @@ import java.util.List;
 
 @Component
 public class FlightMapper implements IBaseMapper<FlightEntity, FlightDTO, FlightRequestDTO> {
+
+    private final SeatMapper seatMapper;
+
+    public FlightMapper(SeatMapper seatMapper) {
+        this.seatMapper = seatMapper;
+    }
+
     @Override
     public FlightDTO entityToDTO(FlightEntity entity) {
         FlightDTO flightDTO = new FlightDTO();
@@ -24,7 +31,7 @@ public class FlightMapper implements IBaseMapper<FlightEntity, FlightDTO, Flight
         flightDTO.setDepartureTime(entity.getDepartureTime());
         flightDTO.setDate(entity.getDate());
         flightDTO.setPrice(entity.getPrice());
-        //flightDTO.setSeat(entity.getSeat());
+        flightDTO.setSeat(seatMapper.entityListToDTOList(entity.getSeat()));
 
         return flightDTO;
     }
@@ -42,7 +49,7 @@ public class FlightMapper implements IBaseMapper<FlightEntity, FlightDTO, Flight
         flightEntity.setDepartureTime(dto.getDepartureTime());
         flightEntity.setDate(dto.getDate());
         flightEntity.setPrice(dto.getPrice());
-        //flightEntity.setSeat(dto.getSeat());
+        flightEntity.setSeat(seatMapper.dtoListToEntityList(dto.getSeat()));
 
         return flightEntity;
     }
@@ -76,7 +83,7 @@ public class FlightMapper implements IBaseMapper<FlightEntity, FlightDTO, Flight
         flightEntity.setDepartureTime(requestDTO.getDepartureTime());
         flightEntity.setDate(requestDTO.getDate());
         flightEntity.setPrice(requestDTO.getPrice());
-        //flightEntity.setSeat(requestDTO.getSeat());
+        flightEntity.setSeat(seatMapper.requestDTOListToEntityList(requestDTO.getSeat()));
 
         return flightEntity;
     }
@@ -93,13 +100,21 @@ public class FlightMapper implements IBaseMapper<FlightEntity, FlightDTO, Flight
 
     @Override
     public FlightEntity requestDTOToExistEntity(FlightRequestDTO requestDTO, FlightEntity entity) {
-        entity.setFlightNumber(requestDTO.getFlightNumber());
-        entity.setDeparture(requestDTO.getDeparture());
-        entity.setArrival(requestDTO.getArrival());
-        entity.setDepartureTime(requestDTO.getDepartureTime());
-        entity.setDate(requestDTO.getDate());
-        entity.setPrice(requestDTO.getPrice());
-        //entity.setSeat(requestDTO.getSeat());
+        if (requestDTO.getFlightNumber() != null)
+            entity.setFlightNumber(requestDTO.getFlightNumber());
+        if (requestDTO.getDeparture() != null)
+            entity.setDeparture(requestDTO.getDeparture());
+        if (requestDTO.getArrival() != null)
+            entity.setArrival(requestDTO.getArrival());
+        if (requestDTO.getDepartureTime() != null)
+            entity.setDepartureTime(requestDTO.getDepartureTime());
+        if (requestDTO.getDate() != null)
+            entity.setDate(requestDTO.getDate());
+        if (requestDTO.getPrice() != null)
+            entity.setPrice(requestDTO.getPrice());
+        if (requestDTO.getSeat() != null)
+            entity.setSeat(seatMapper.requestDTOListToEntityList(requestDTO.getSeat()));
+
 
         return entity;
     }

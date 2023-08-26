@@ -19,9 +19,9 @@ public class HotelRequestDTO extends BaseDTO {
 
     private String email;
 
-    private List<RoomDTO> room;
+    private List<RoomRequestDTO> room;
 
 
-    private BankAccountDTO bankAccount;
+    private BankAccountRequestDTO bankAccount;
 
 }

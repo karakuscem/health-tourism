@@ -10,8 +10,8 @@ import java.util.List;
 @Data
 public class AvailableDoctorDateRequestDTO extends BaseDTO {
 
-    private List<DoctorDTO> doctor;
+    private List<DoctorRequestDTO> doctor;
 
-    private List<DateDTO> date;
+    private List<DateRequestDTO> date;
 
 }

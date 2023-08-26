@@ -11,6 +11,15 @@ import java.util.List;
 
 @Component
 public class HospitalMapper implements IBaseMapper<HospitalEntity, HospitalDTO, HospitalRequestDTO> {
+
+    private final DoctorMapper doctorMapper;
+    private final BankAccountMapper bankAccountMapper;
+
+    protected HospitalMapper(DoctorMapper doctorMapper, BankAccountMapper bankAccountMapper) {
+        this.doctorMapper = doctorMapper;
+        this.bankAccountMapper = bankAccountMapper;
+    }
+
     @Override
     public HospitalDTO entityToDTO(HospitalEntity entity) {
         HospitalDTO dto = new HospitalDTO();
@@ -21,8 +30,8 @@ public class HospitalMapper implements IBaseMapper<HospitalEntity, HospitalDTO, 
         dto.setHospitalName(entity.getHospitalName());
         dto.setPhoneNumber(entity.getPhoneNumber());
         dto.setEmail(entity.getEmail());
-        //dto.setDoctor(entity.getDoctor());
-        //dto.setBankAccount(entity.getBankAccount());
+        dto.setDoctor(doctorMapper.entityListToDTOList(entity.getDoctor()));
+        dto.setBankAccount(bankAccountMapper.entityToDTO(entity.getBankAccount()));
 
         return dto;
     }
@@ -37,8 +46,8 @@ public class HospitalMapper implements IBaseMapper<HospitalEntity, HospitalDTO, 
         entity.setHospitalName(dto.getHospitalName());
         entity.setPhoneNumber(dto.getPhoneNumber());
         entity.setEmail(dto.getEmail());
-        //entity.setDoctor(dto.getDoctor());
-        //entity.setBankAccount(dto.getBankAccount());
+        entity.setDoctor(doctorMapper.dtoListToEntityList(dto.getDoctor()));
+        entity.setBankAccount(bankAccountMapper.dtoToEntity(dto.getBankAccount()));
 
         return entity;
     }
@@ -72,8 +81,8 @@ public class HospitalMapper implements IBaseMapper<HospitalEntity, HospitalDTO, 
         entity.setHospitalName(requestDTO.getHospitalName());
         entity.setPhoneNumber(requestDTO.getPhoneNumber());
         entity.setEmail(requestDTO.getEmail());
-        //entity.setDoctor(requestDTO.getDoctor());
-        //entity.setBankAccount(requestDTO.getBankAccount());
+        entity.setDoctor(doctorMapper.requestDTOListToEntityList(requestDTO.getDoctor()));
+        entity.setBankAccount(bankAccountMapper.requestDTOToEntity(requestDTO.getBankAccount()));
 
         return entity;
     }
@@ -90,30 +99,16 @@ public class HospitalMapper implements IBaseMapper<HospitalEntity, HospitalDTO, 
 
     @Override
     public HospitalEntity requestDTOToExistEntity(HospitalRequestDTO requestDTO, HospitalEntity entity) {
-        if (requestDTO.getUuid() != null) {
-            entity.setUuid(requestDTO.getUuid());
-        }
-        if (requestDTO.getCreationDate() != null) {
-            entity.setCreationDate(requestDTO.getCreationDate());
-        }
-        if (requestDTO.getUpdatedDate() != null) {
-            entity.setUpdatedDate(requestDTO.getUpdatedDate());
-        }
-        if (requestDTO.getHospitalName() != null) {
+        if (requestDTO.getHospitalName() != null)
             entity.setHospitalName(requestDTO.getHospitalName());
-        }
-        if (requestDTO.getPhoneNumber() != null) {
+        if (requestDTO.getPhoneNumber() != null)
             entity.setPhoneNumber(requestDTO.getPhoneNumber());
-        }
-        if (requestDTO.getEmail() != null) {
+        if (requestDTO.getEmail() != null)
             entity.setEmail(requestDTO.getEmail());
-        }
-        //if (requestDTO.getDoctor() != null) {
-        //    entity.setDoctor(requestDTO.getDoctor());
-        //}
-        //if (requestDTO.getBankAccount() != null) {
-        //    entity.setBankAccount(requestDTO.getBankAccount());
-        //}
+        if (requestDTO.getDoctor() != null)
+            entity.setDoctor(doctorMapper.requestDTOListToEntityList(requestDTO.getDoctor()));
+        if (requestDTO.getBankAccount() != null)
+            entity.setBankAccount(bankAccountMapper.requestDTOToEntity(requestDTO.getBankAccount()));
 
         return entity;
     }

@@ -12,13 +12,13 @@ import java.util.Date;
 @Entity
 public class RoomEntity extends BaseEntity {
     @Column
-    private int roomNumber;
+    private Integer roomNumber;
 
     @Column
     private BigDecimal price;
 
     @Column
-    private boolean isReserved;
+    private Boolean isReserved;
 
     @Column
     private Date exitDate;

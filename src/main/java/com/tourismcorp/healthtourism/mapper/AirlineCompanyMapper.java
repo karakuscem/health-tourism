@@ -13,6 +13,14 @@ import java.util.List;
 public abstract class AirlineCompanyMapper implements IBaseMapper<AirlineCompanyEntity,
         AirlineCompanyDTO, AirlineCompanyRequestDTO> {
 
+    private final FlightMapper flightMapper;
+    private final BankAccountMapper bankAccountMapper;
+
+    protected AirlineCompanyMapper(FlightMapper flightMapper, BankAccountMapper bankAccountMapper) {
+        this.flightMapper = flightMapper;
+        this.bankAccountMapper = bankAccountMapper;
+    }
+
     @Override
     public AirlineCompanyDTO entityToDTO(AirlineCompanyEntity entity) {
         AirlineCompanyDTO airlineCompanyDTO = new AirlineCompanyDTO();
@@ -23,8 +31,8 @@ public abstract class AirlineCompanyMapper implements IBaseMapper<AirlineCompany
         airlineCompanyDTO.setCompanyName(entity.getCompanyName());
         airlineCompanyDTO.setPhoneNumber(entity.getPhoneNumber());
         airlineCompanyDTO.setEmail(entity.getEmail());
-        //airlineCompanyDTO.setFlight(entity.getFlight()); // need flight mapper
-        //airlineCompanyDTO.setBankAccount(entity.getBankAccount()); // need bank account mapper
+        airlineCompanyDTO.setFlight(flightMapper.entityListToDTOList(entity.getFlight()));
+        airlineCompanyDTO.setBankAccount(bankAccountMapper.entityToDTO(entity.getBankAccount()));
 
         return airlineCompanyDTO;
     }
@@ -39,8 +47,8 @@ public abstract class AirlineCompanyMapper implements IBaseMapper<AirlineCompany
         airlineCompanyEntity.setCompanyName(dto.getCompanyName());
         airlineCompanyEntity.setPhoneNumber(dto.getPhoneNumber());
         airlineCompanyEntity.setEmail(dto.getEmail());
-        //airlineCompanyEntity.setFlight(dto.getFlight()); // need flight mapper
-        //airlineCompanyEntity.setBankAccount(dto.getBankAccount()); // need bank account mapper
+        airlineCompanyEntity.setFlight(flightMapper.dtoListToEntityList(dto.getFlight()));
+        airlineCompanyEntity.setBankAccount(bankAccountMapper.dtoToEntity(dto.getBankAccount()));
 
         return airlineCompanyEntity;
     }
@@ -75,8 +83,8 @@ public abstract class AirlineCompanyMapper implements IBaseMapper<AirlineCompany
         airlineCompanyEntity.setCompanyName(requestDTO.getCompanyName());
         airlineCompanyEntity.setPhoneNumber(requestDTO.getPhoneNumber());
         airlineCompanyEntity.setEmail(requestDTO.getEmail());
-        //airlineCompanyEntity.setFlight(requestDTO.getFlight()); // need flight mapper
-        //airlineCompanyEntity.setBankAccount(requestDTO.getBankAccount()); // need bank account mapper
+        airlineCompanyEntity.setFlight(flightMapper.requestDTOListToEntityList(requestDTO.getFlight()));
+        airlineCompanyEntity.setBankAccount(bankAccountMapper.requestDTOToEntity(requestDTO.getBankAccount()));
 
         return airlineCompanyEntity;
     }
@@ -93,15 +101,14 @@ public abstract class AirlineCompanyMapper implements IBaseMapper<AirlineCompany
 
     @Override
     public AirlineCompanyEntity requestDTOToExistEntity(AirlineCompanyRequestDTO requestDTO, AirlineCompanyEntity entity) {
-        entity.setUuid(requestDTO.getUuid());
-        entity.setCreationDate(requestDTO.getCreationDate());
-        entity.setUpdatedDate(requestDTO.getUpdatedDate());
-        entity.setId(requestDTO.getId());
-        entity.setCompanyName(requestDTO.getCompanyName());
-        entity.setPhoneNumber(requestDTO.getPhoneNumber());
-        entity.setEmail(requestDTO.getEmail());
-        //entity.setFlight(requestDTO.getFlight()); // need flight mapper
-        //entity.setBankAccount(requestDTO.getBankAccount()); // need bank account mapper
+        if (requestDTO.getCompanyName() != null)
+            entity.setCompanyName(requestDTO.getCompanyName());
+        if (requestDTO.getPhoneNumber() != null)
+            entity.setPhoneNumber(requestDTO.getPhoneNumber());
+        if (requestDTO.getEmail() != null)
+            entity.setEmail(requestDTO.getEmail());
+        entity.setFlight(flightMapper.requestDTOListToEntityList(requestDTO.getFlight()));
+        entity.setBankAccount(bankAccountMapper.requestDTOToEntity(requestDTO.getBankAccount()));
 
         return entity;
     }

@@ -79,11 +79,8 @@ public class DateMapper implements IBaseMapper<DateEntity, DateDTO, DateRequestD
 
     @Override
     public DateEntity requestDTOToExistEntity(DateRequestDTO requestDTO, DateEntity entity) {
-        entity.setUuid(requestDTO.getUuid());
-        entity.setCreationDate(requestDTO.getCreationDate());
-        entity.setUpdatedDate(requestDTO.getUpdatedDate());
-        entity.setId(requestDTO.getId());
-        entity.setDate(requestDTO.getDate());
+        if (requestDTO.getDate() != null)
+            entity.setDate(requestDTO.getDate());
 
         return entity;
     }

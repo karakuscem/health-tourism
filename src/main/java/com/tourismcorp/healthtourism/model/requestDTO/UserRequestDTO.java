@@ -4,6 +4,7 @@ import com.tourismcorp.healthtourism.model.RoleDTO;
 import com.tourismcorp.healthtourism.util.BaseDTO;
 import lombok.Data;
 
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -19,5 +20,7 @@ public class UserRequestDTO extends BaseDTO {
 
     private String lastName;
 
-    private Set<RoleDTO> roles;
+    private List<RoleRequestDTO> roles;
+
+    private BankAccountRequestDTO bankAccount;
 }

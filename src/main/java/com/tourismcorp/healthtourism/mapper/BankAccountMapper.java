@@ -85,13 +85,12 @@ public class BankAccountMapper implements IBaseMapper<BankAccountEntity, BankAcc
 
     @Override
     public BankAccountEntity requestDTOToExistEntity(BankAccountRequestDTO requestDTO, BankAccountEntity entity) {
-        entity.setUuid(requestDTO.getUuid());
-        entity.setCreationDate(requestDTO.getCreationDate());
-        entity.setUpdatedDate(requestDTO.getUpdatedDate());
-        entity.setId(requestDTO.getId());
-        entity.setBankName(requestDTO.getBankName());
-        entity.setAccountNumber(requestDTO.getAccountNumber());
-        entity.setBalance(requestDTO.getBalance());
+        if (requestDTO.getBankName() != null)
+            entity.setBankName(requestDTO.getBankName());
+        if (requestDTO.getAccountNumber() != null)
+            entity.setAccountNumber(requestDTO.getAccountNumber());
+        if (requestDTO.getBalance() != null)
+            entity.setBalance(requestDTO.getBalance());
 
         return entity;
     }

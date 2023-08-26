@@ -12,7 +12,7 @@ import java.util.List;
 
 public class AvailableRoomDateRequestDTO extends BaseDTO {
 
-    private List<RoomDTO> room;
+    private List<RoomRequestDTO> room;
 
-    private List<DateDTO> date;
+    private List<DateRequestDTO> date;
 }

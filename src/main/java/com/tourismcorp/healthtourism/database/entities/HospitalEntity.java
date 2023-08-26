@@ -20,6 +20,6 @@ public class HospitalEntity extends BaseEntity {
     @OneToMany(mappedBy = "hospital")
     private List<DoctorEntity> doctor;
 
-    @ManyToOne
+    @OneToOne
     private BankAccountEntity bankAccount;
 }

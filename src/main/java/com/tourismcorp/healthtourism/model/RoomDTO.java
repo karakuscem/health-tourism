@@ -9,13 +9,13 @@ import java.util.Date;
 @Data
 public class RoomDTO extends BaseDTO {
 
-    private int roomNumber;
+    private Integer roomNumber;
 
     private BigDecimal price;
 
     private HotelDTO hotel;
 
-    private boolean isReserved;
+    private Boolean isReserved;
 
     private Date exitDate;
 }

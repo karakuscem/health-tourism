@@ -7,6 +7,7 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -20,6 +21,6 @@ public class RoleEntity extends BaseEntity {
     private String description;
 
     @ManyToMany(mappedBy = "roles")
-    private Set<UserEntity> users;
+    private List<UserEntity> users;
 
 }

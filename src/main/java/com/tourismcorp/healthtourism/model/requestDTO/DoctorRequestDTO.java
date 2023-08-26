@@ -8,7 +8,7 @@ import lombok.Data;
 import java.util.Set;
 
 @Data
-public class DoctorRequestDTO extends UserDTO {
+public class DoctorRequestDTO extends UserRequestDTO {
 
     private String field;
 

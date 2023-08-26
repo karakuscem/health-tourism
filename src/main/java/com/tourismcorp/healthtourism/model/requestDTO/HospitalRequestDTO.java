@@ -16,7 +16,7 @@ public class HospitalRequestDTO extends BaseDTO {
 
     private String email;
 
-    private List<DoctorDTO> doctor;
+    private List<DoctorRequestDTO> doctor;
 
-    private BankAccountDTO bankAccount;
+    private BankAccountRequestDTO bankAccount;
 }

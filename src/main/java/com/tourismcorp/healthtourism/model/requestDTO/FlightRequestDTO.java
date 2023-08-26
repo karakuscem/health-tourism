@@ -18,5 +18,5 @@ public class FlightRequestDTO extends BaseDTO {
     private String departureTime;
     private Date date;
     private BigDecimal price;
-    private List<SeatDTO> seat;
+    private List<SeatRequestDTO> seat;
 }

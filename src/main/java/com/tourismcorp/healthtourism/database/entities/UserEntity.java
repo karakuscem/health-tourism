@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -32,5 +33,8 @@ public class UserEntity extends BaseEntity {
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     @JoinColumn(name = "role_id", nullable = false)
-    private Set<RoleEntity> roles;
+    private List<RoleEntity> roles;
+
+    @OneToOne
+    private BankAccountEntity bankAccount;
 }

@@ -12,6 +12,14 @@ import java.util.List;
 @Component
 public class AvailableRoomDateMapper implements IBaseMapper<AvailableRoomDateEntity, AvailableRoomDateDTO,
         AvailableRoomDateRequestDTO> {
+
+    private final RoomMapper roomMapper;
+    private final DateMapper dateMapper;
+
+    protected AvailableRoomDateMapper(RoomMapper roomMapper, DateMapper dateMapper) {
+        this.roomMapper = roomMapper;
+        this.dateMapper = dateMapper;
+    }
     @Override
     public AvailableRoomDateDTO entityToDTO(AvailableRoomDateEntity entity) {
         AvailableRoomDateDTO availableRoomDateDTO = new AvailableRoomDateDTO();
@@ -19,8 +27,8 @@ public class AvailableRoomDateMapper implements IBaseMapper<AvailableRoomDateEnt
         availableRoomDateDTO.setCreationDate(entity.getCreationDate());
         availableRoomDateDTO.setUpdatedDate(entity.getUpdatedDate());
         availableRoomDateDTO.setId(entity.getId());
-        //availableRoomDateDTO.setRoom(entity.getRoom());
-        //availableRoomDateDTO.setDate(entity.getDate());
+        availableRoomDateDTO.setRoom(roomMapper.entityListToDTOList(entity.getRoom()));
+        availableRoomDateDTO.setDate(dateMapper.entityListToDTOList(entity.getDate()));
 
         return availableRoomDateDTO;
     }
@@ -32,8 +40,8 @@ public class AvailableRoomDateMapper implements IBaseMapper<AvailableRoomDateEnt
         availableRoomDateEntity.setCreationDate(dto.getCreationDate());
         availableRoomDateEntity.setUpdatedDate(dto.getUpdatedDate());
         availableRoomDateEntity.setId(dto.getId());
-        //availableRoomDateEntity.setRoom(dto.getRoom());
-        //availableRoomDateEntity.setDate(dto.getDate());
+        availableRoomDateEntity.setRoom(roomMapper.dtoListToEntityList(dto.getRoom()));
+        availableRoomDateEntity.setDate(dateMapper.dtoListToEntityList(dto.getDate()));
 
         return availableRoomDateEntity;
     }
@@ -65,8 +73,8 @@ public class AvailableRoomDateMapper implements IBaseMapper<AvailableRoomDateEnt
         availableRoomDateEntity.setCreationDate(requestDTO.getCreationDate());
         availableRoomDateEntity.setUpdatedDate(requestDTO.getUpdatedDate());
         availableRoomDateEntity.setId(requestDTO.getId());
-        //availableRoomDateEntity.setRoom(requestDTO.getRoom());
-        //availableRoomDateEntity.setDate(requestDTO.getDate());
+        availableRoomDateEntity.setRoom(roomMapper.requestDTOListToEntityList(requestDTO.getRoom()));
+        availableRoomDateEntity.setDate(dateMapper.requestDTOListToEntityList(requestDTO.getDate()));
 
         return availableRoomDateEntity;
     }
@@ -83,12 +91,10 @@ public class AvailableRoomDateMapper implements IBaseMapper<AvailableRoomDateEnt
 
     @Override
     public AvailableRoomDateEntity requestDTOToExistEntity(AvailableRoomDateRequestDTO requestDTO, AvailableRoomDateEntity entity) {
-        entity.setUuid(requestDTO.getUuid());
-        entity.setCreationDate(requestDTO.getCreationDate());
-        entity.setUpdatedDate(requestDTO.getUpdatedDate());
-        entity.setId(requestDTO.getId());
-        //entity.setRoom(requestDTO.getRoom());
-        //entity.setDate(requestDTO.getDate());
+        if (requestDTO.getRoom() != null)
+            entity.setRoom(roomMapper.requestDTOListToEntityList(requestDTO.getRoom()));
+        if (requestDTO.getDate() != null)
+            entity.setDate(dateMapper.requestDTOListToEntityList(requestDTO.getDate()));
 
         return entity;
     }

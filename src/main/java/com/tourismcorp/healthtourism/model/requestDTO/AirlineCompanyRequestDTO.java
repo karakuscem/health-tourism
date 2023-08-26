@@ -17,8 +17,8 @@ public class AirlineCompanyRequestDTO extends BaseDTO {
     private String email;
 
 
-    private List<FlightDTO> flight;
+    private List<FlightRequestDTO> flight;
 
 
-    private BankAccountDTO bankAccount;
+    private BankAccountRequestDTO bankAccount;
 }
