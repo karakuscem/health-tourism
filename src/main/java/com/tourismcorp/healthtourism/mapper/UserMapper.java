@@ -72,6 +72,8 @@ public class UserMapper implements IBaseMapper<UserEntity, UserDTO, UserRequestD
     @Override
     public List<UserEntity> dtoListToEntityList(List<UserDTO> dtoList) {
         List<UserEntity> userEntityList = new ArrayList<>();
+        if (dtoList == null)
+            return userEntityList;
         for (UserDTO dto : dtoList) {
             UserEntity entity = dtoToEntity(dto);
             userEntityList.add(entity);

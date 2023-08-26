@@ -11,5 +11,4 @@ public class SeatDTO extends BaseDTO {
 
     private boolean isReserved;
 
-    private FlightDTO flight;
 }

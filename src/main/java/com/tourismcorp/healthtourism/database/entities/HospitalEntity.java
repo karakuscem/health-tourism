@@ -17,9 +17,9 @@ public class HospitalEntity extends BaseEntity {
     @Column
     private String email;
 
-    @OneToMany(mappedBy = "hospital")
+    @OneToMany(mappedBy = "hospital", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<DoctorEntity> doctor;
 
-    @OneToOne
-    private BankAccountEntity bankAccount = null;
+    @ManyToOne
+    private BankAccountEntity bankAccount;
 }

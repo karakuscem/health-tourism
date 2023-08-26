@@ -15,7 +15,4 @@ public class SeatEntity extends BaseEntity {
     @Column
     private boolean isReserved;
 
-    @ManyToOne
-    @JoinColumn(name = "flight_entity_id", nullable = false)
-    private FlightEntity flight;
 }

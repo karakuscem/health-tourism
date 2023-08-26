@@ -95,6 +95,8 @@ public class FlightMapper implements IBaseMapper<FlightEntity, FlightDTO, Flight
     @Override
     public List<FlightEntity> requestDTOListToEntityList(List<FlightRequestDTO> dtoList) {
         List<FlightEntity> flightEntityList = new ArrayList<>();
+        if (dtoList == null)
+            return flightEntityList;
         for (FlightRequestDTO dto : dtoList) {
             FlightEntity entity = requestDTOToEntity(dto);
             flightEntityList.add(entity);

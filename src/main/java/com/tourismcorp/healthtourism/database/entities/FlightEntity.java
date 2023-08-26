@@ -26,7 +26,7 @@ public class FlightEntity extends BaseEntity {
     @Column
     private BigDecimal price;
 
-    @OneToMany(mappedBy = "flight")
+    @OneToMany(orphanRemoval = true)
     private List<SeatEntity> seat;
 
     @ManyToOne(fetch = FetchType.LAZY)

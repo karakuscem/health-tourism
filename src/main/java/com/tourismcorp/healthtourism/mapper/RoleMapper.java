@@ -87,6 +87,8 @@ public class RoleMapper implements IBaseMapper<RoleEntity, RoleDTO, RoleRequestD
     @Override
     public List<RoleEntity> requestDTOListToEntityList(List<RoleRequestDTO> dtoList) {
         List<RoleEntity> roleEntityList = new ArrayList<>();
+        if (dtoList == null)
+            return roleEntityList;
         for (RoleRequestDTO dto : dtoList) {
             RoleEntity entity = requestDTOToEntity(dto);
             roleEntityList.add(entity);

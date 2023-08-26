@@ -29,7 +29,6 @@ public class SeatMapper implements IBaseMapper<SeatEntity, SeatDTO, SeatRequestD
         seatDTO.setUpdatedDate(entity.getUpdatedDate());
         seatDTO.setId(entity.getId());
         seatDTO.setSeatNumber(entity.getSeatNumber());
-        seatDTO.setFlight(flightMapper.entityToDTO(entity.getFlight()));
 
         return seatDTO;
     }
@@ -42,7 +41,6 @@ public class SeatMapper implements IBaseMapper<SeatEntity, SeatDTO, SeatRequestD
         seatEntity.setUpdatedDate(dto.getUpdatedDate());
         seatEntity.setId(dto.getId());
         seatEntity.setSeatNumber(dto.getSeatNumber());
-        seatEntity.setFlight(flightMapper.dtoToEntity(dto.getFlight()));
 
         return seatEntity;
     }
@@ -75,7 +73,7 @@ public class SeatMapper implements IBaseMapper<SeatEntity, SeatDTO, SeatRequestD
         seatEntity.setUpdatedDate(requestDTO.getUpdatedDate());
         seatEntity.setId(requestDTO.getId());
         seatEntity.setSeatNumber(requestDTO.getSeatNumber());
-        seatEntity.setFlight(flightMapper.requestDTOToEntity(requestDTO.getFlight()));
+
 
         return seatEntity;
     }
@@ -83,6 +81,8 @@ public class SeatMapper implements IBaseMapper<SeatEntity, SeatDTO, SeatRequestD
     @Override
     public List<SeatEntity> requestDTOListToEntityList(List<SeatRequestDTO> dtoList) {
         List<SeatEntity> seatEntityList = new ArrayList<>();
+        if (dtoList == null)
+            return seatEntityList;
         for (SeatRequestDTO dto : dtoList) {
             SeatEntity entity = requestDTOToEntity(dto);
             seatEntityList.add(entity);
@@ -94,8 +94,6 @@ public class SeatMapper implements IBaseMapper<SeatEntity, SeatDTO, SeatRequestD
     public SeatEntity requestDTOToExistEntity(SeatRequestDTO requestDTO, SeatEntity entity) {
         if (requestDTO.getSeatNumber() != 0)
             entity.setSeatNumber(requestDTO.getSeatNumber());
-        if (requestDTO.getFlight() != null)
-            entity.setFlight(flightMapper.requestDTOToEntity(requestDTO.getFlight()));
 
         return entity;
 

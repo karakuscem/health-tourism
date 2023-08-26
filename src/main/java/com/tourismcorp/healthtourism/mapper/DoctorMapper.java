@@ -84,7 +84,7 @@ public class DoctorMapper implements IBaseMapper<DoctorEntity, DoctorDTO, Doctor
         doctorEntity.setFirstName(requestDTO.getFirstName());
         doctorEntity.setLastName(requestDTO.getLastName());
         doctorEntity.setField(requestDTO.getField());
-        doctorEntity.setRoles(roleMapper.requestDTOListToEntityList(requestDTO.getRoles()));
+        doctorEntity.setRoles(roleMapper.dtoListToEntityList(requestDTO.getRoles()));
         doctorEntity.setHospital(hospitalMapper.requestDTOToEntity(requestDTO.getHospital()));
 
         return doctorEntity;
@@ -93,6 +93,8 @@ public class DoctorMapper implements IBaseMapper<DoctorEntity, DoctorDTO, Doctor
     @Override
     public List<DoctorEntity> requestDTOListToEntityList(List<DoctorRequestDTO> dtoList) {
         List<DoctorEntity> doctorEntityList = new ArrayList<>();
+        if (dtoList == null)
+            return doctorEntityList;
         for (DoctorRequestDTO dto : dtoList) {
             DoctorEntity entity = requestDTOToEntity(dto);
             doctorEntityList.add(entity);
@@ -109,7 +111,7 @@ public class DoctorMapper implements IBaseMapper<DoctorEntity, DoctorDTO, Doctor
         if (requestDTO.getField() != null)
             entity.setField(requestDTO.getField());
         if (requestDTO.getRoles() != null)
-            entity.setRoles(roleMapper.requestDTOListToEntityList(requestDTO.getRoles()));
+            entity.setRoles(roleMapper.dtoListToEntityList(requestDTO.getRoles()));
         if (requestDTO.getHospital() != null)
          entity.setHospital(hospitalMapper.requestDTOToEntity(requestDTO.getHospital()));
 

@@ -6,8 +6,12 @@ import com.tourismcorp.healthtourism.mapper.BankAccountMapper;
 import com.tourismcorp.healthtourism.model.BankAccountDTO;
 import com.tourismcorp.healthtourism.model.requestDTO.BankAccountRequestDTO;
 import com.tourismcorp.healthtourism.util.BaseService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
+
+import java.util.UUID;
 
 @Service
 public class BankAccountService extends BaseService<
@@ -33,4 +37,5 @@ public class BankAccountService extends BaseService<
     protected BankAccountRepository getRepository() {
         return this.bankAccountRepository;
     }
+
 }

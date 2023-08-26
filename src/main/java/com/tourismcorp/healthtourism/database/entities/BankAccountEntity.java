@@ -1,9 +1,7 @@
 package com.tourismcorp.healthtourism.database.entities;
 
 import com.tourismcorp.healthtourism.util.BaseEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -19,5 +17,6 @@ public class BankAccountEntity extends BaseEntity {
     private String accountNumber;
     @Column
     private BigDecimal balance;
+
 
 }
