@@ -43,14 +43,12 @@ public class AppointmentMapper implements IBaseMapper<AppointmentEntity, Appoint
         dto.setUpdatedDate(entity.getUpdatedDate());
         dto.setDate(entity.getDate());
         dto.setDoctor(doctorMapper.entityToDTO(entity.getDoctor()));
-        dto.setPatient(userMapper.entityToDTO(entity.getPatient()));
+        dto.setUser(userMapper.entityToDTO(entity.getUser()));
         dto.setHospital(hospitalMapper.entityToDTO(entity.getHospital()));
         dto.setHotel(hotelMapper.entityToDTO(entity.getHotel()));
         dto.setFlight(flightMapper.entityToDTO(entity.getFlight()));
         dto.setRoom(roomMapper.entityToDTO(entity.getRoom()));
-        dto.setRoomDate(entity.getRoomDate());
         dto.setSeat(seatMapper.entityToDTO(entity.getSeat()));
-        dto.setFlightDate(entity.getFlightDate());
 
         return dto;
     }
@@ -64,14 +62,12 @@ public class AppointmentMapper implements IBaseMapper<AppointmentEntity, Appoint
         entity.setUpdatedDate(dto.getUpdatedDate());
         entity.setDate(dto.getDate());
         entity.setDoctor(doctorMapper.dtoToEntity(dto.getDoctor()));
-        entity.setPatient(userMapper.dtoToEntity(dto.getPatient()));
+        entity.setUser(userMapper.dtoToEntity(dto.getUser()));
         entity.setHospital(hospitalMapper.dtoToEntity(dto.getHospital()));
         entity.setHotel(hotelMapper.dtoToEntity(dto.getHotel()));
         entity.setFlight(flightMapper.dtoToEntity(dto.getFlight()));
         entity.setRoom(roomMapper.dtoToEntity(dto.getRoom()));
-        entity.setRoomDate(dto.getRoomDate());
         entity.setSeat(seatMapper.dtoToEntity(dto.getSeat()));
-        entity.setFlightDate(dto.getFlightDate());
 
         return entity;
     }
@@ -103,14 +99,12 @@ public class AppointmentMapper implements IBaseMapper<AppointmentEntity, Appoint
         entity.setUpdatedDate(requestDTO.getUpdatedDate());
         entity.setDate(requestDTO.getDate());
         entity.setDoctor(doctorMapper.requestDTOToEntity(requestDTO.getDoctor()));
-        entity.setPatient(userMapper.requestDTOToEntity(requestDTO.getPatient()));
+        entity.setUser(userMapper.requestDTOToEntity(requestDTO.getUser()));
         entity.setHospital(hospitalMapper.requestDTOToEntity(requestDTO.getHospital()));
         entity.setHotel(hotelMapper.requestDTOToEntity(requestDTO.getHotel()));
         entity.setFlight(flightMapper.requestDTOToEntity(requestDTO.getFlight()));
         entity.setRoom(roomMapper.requestDTOToEntity(requestDTO.getRoom()));
-        entity.setRoomDate(requestDTO.getRoomDate());
         entity.setSeat(seatMapper.requestDTOToEntity(requestDTO.getSeat()));
-        entity.setFlightDate(requestDTO.getFlightDate());
 
 
         return entity;
@@ -131,8 +125,8 @@ public class AppointmentMapper implements IBaseMapper<AppointmentEntity, Appoint
             entity.setDate(requestDTO.getDate());
         if (requestDTO.getDoctor() != null)
             entity.setDoctor(doctorMapper.requestDTOToEntity(requestDTO.getDoctor()));
-        if (requestDTO.getPatient() != null)
-            entity.setPatient(userMapper.requestDTOToEntity(requestDTO.getPatient()));
+        if (requestDTO.getUser() != null)
+            entity.setUser(userMapper.requestDTOToEntity(requestDTO.getUser()));
         if (requestDTO.getHospital() != null)
             entity.setHospital(hospitalMapper.requestDTOToEntity(requestDTO.getHospital()));
         if (requestDTO.getHotel() != null)
@@ -141,12 +135,8 @@ public class AppointmentMapper implements IBaseMapper<AppointmentEntity, Appoint
             entity.setFlight(flightMapper.requestDTOToEntity(requestDTO.getFlight()));
         if (requestDTO.getRoom() != null)
             entity.setRoom(roomMapper.requestDTOToEntity(requestDTO.getRoom()));
-        if (requestDTO.getRoomDate() != null)
-            entity.setRoomDate(requestDTO.getRoomDate());
         if (requestDTO.getSeat() != null)
             entity.setSeat(seatMapper.requestDTOToEntity(requestDTO.getSeat()));
-        if (requestDTO.getFlightDate() != null)
-            entity.setFlightDate(requestDTO.getFlightDate());
 
 
         return entity;

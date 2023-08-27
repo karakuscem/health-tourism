@@ -30,7 +30,6 @@ public class RoomMapper implements IBaseMapper<RoomEntity, RoomDTO, RoomRequestD
         roomDTO.setId(entity.getId());
         roomDTO.setRoomNumber(entity.getRoomNumber());
         roomDTO.setExitDate(entity.getExitDate());
-        roomDTO.setHotel(hotelMapper.entityToDTO(entity.getHotel()));
         roomDTO.setPrice(entity.getPrice());
         roomDTO.setIsReserved(entity.getIsReserved());
 
@@ -46,7 +45,6 @@ public class RoomMapper implements IBaseMapper<RoomEntity, RoomDTO, RoomRequestD
         roomEntity.setId(dto.getId());
         roomEntity.setRoomNumber(dto.getRoomNumber());
         roomEntity.setExitDate(dto.getExitDate());
-        roomEntity.setHotel(hotelMapper.dtoToEntity(dto.getHotel()));
         roomEntity.setPrice(dto.getPrice());
         roomEntity.setIsReserved(dto.getIsReserved());
 
@@ -82,7 +80,6 @@ public class RoomMapper implements IBaseMapper<RoomEntity, RoomDTO, RoomRequestD
         roomEntity.setId(requestDTO.getId());
         roomEntity.setRoomNumber(requestDTO.getRoomNumber());
         roomEntity.setExitDate(requestDTO.getExitDate());
-        roomEntity.setHotel(hotelMapper.requestDTOToEntity(requestDTO.getHotel()));
         roomEntity.setPrice(requestDTO.getPrice());
         roomEntity.setIsReserved(requestDTO.getIsReserved());
 
@@ -92,6 +89,8 @@ public class RoomMapper implements IBaseMapper<RoomEntity, RoomDTO, RoomRequestD
     @Override
     public List<RoomEntity> requestDTOListToEntityList(List<RoomRequestDTO> dtoList) {
         List<RoomEntity> roomEntityList = new ArrayList<>();
+        if (dtoList == null)
+            return roomEntityList;
         for (RoomRequestDTO dto : dtoList) {
             RoomEntity entity = requestDTOToEntity(dto);
             roomEntityList.add(entity);
@@ -105,8 +104,6 @@ public class RoomMapper implements IBaseMapper<RoomEntity, RoomDTO, RoomRequestD
             entity.setRoomNumber(requestDTO.getRoomNumber());
         if(requestDTO.getExitDate() != null)
             entity.setExitDate(requestDTO.getExitDate());
-        if(requestDTO.getHotel() != null)
-            entity.setHotel(hotelMapper.requestDTOToEntity(requestDTO.getHotel()));
         if(requestDTO.getPrice() != null)
             entity.setPrice(requestDTO.getPrice());
         if(requestDTO.getIsReserved() != null)

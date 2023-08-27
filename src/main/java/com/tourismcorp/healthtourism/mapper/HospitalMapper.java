@@ -78,6 +78,7 @@ public class HospitalMapper implements IBaseMapper<HospitalEntity, HospitalDTO, 
     @Override
     public HospitalEntity requestDTOToEntity(HospitalRequestDTO requestDTO) {
         HospitalEntity entity = new HospitalEntity();
+        entity.setId(requestDTO.getId());
         entity.setUuid(requestDTO.getUuid());
         entity.setCreationDate(requestDTO.getCreationDate());
         entity.setUpdatedDate(requestDTO.getUpdatedDate());

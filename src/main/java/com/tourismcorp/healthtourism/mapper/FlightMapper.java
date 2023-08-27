@@ -81,6 +81,10 @@ public class FlightMapper implements IBaseMapper<FlightEntity, FlightDTO, Flight
     @Override
     public FlightEntity requestDTOToEntity(FlightRequestDTO requestDTO) {
         FlightEntity flightEntity = new FlightEntity();
+        flightEntity.setUuid(requestDTO.getUuid());
+        flightEntity.setCreationDate(requestDTO.getCreationDate());
+        flightEntity.setUpdatedDate(requestDTO.getUpdatedDate());
+        flightEntity.setId(requestDTO.getId());
         flightEntity.setFlightNumber(requestDTO.getFlightNumber());
         flightEntity.setDeparture(requestDTO.getDeparture());
         flightEntity.setArrival(requestDTO.getArrival());

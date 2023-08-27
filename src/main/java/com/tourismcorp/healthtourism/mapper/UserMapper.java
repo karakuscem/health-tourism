@@ -84,6 +84,10 @@ public class UserMapper implements IBaseMapper<UserEntity, UserDTO, UserRequestD
     @Override
     public UserEntity requestDTOToEntity(UserRequestDTO requestDTO) {
         UserEntity userEntity = new UserEntity();
+        userEntity.setUuid(requestDTO.getUuid());
+        userEntity.setCreationDate(requestDTO.getCreationDate());
+        userEntity.setUpdatedDate(requestDTO.getUpdatedDate());
+        userEntity.setId(requestDTO.getId());
         userEntity.setFirstName(requestDTO.getFirstName());
         userEntity.setLastName(requestDTO.getLastName());
         userEntity.setUsername(requestDTO.getUsername());

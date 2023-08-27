@@ -24,6 +24,8 @@ public class SeatMapper implements IBaseMapper<SeatEntity, SeatDTO, SeatRequestD
     @Override
     public SeatDTO entityToDTO(SeatEntity entity) {
         SeatDTO seatDTO = new SeatDTO();
+        if (entity == null)
+            return seatDTO;
         seatDTO.setUuid(entity.getUuid());
         seatDTO.setCreationDate(entity.getCreationDate());
         seatDTO.setUpdatedDate(entity.getUpdatedDate());

@@ -76,6 +76,10 @@ public class HotelMapper implements IBaseMapper<HotelEntity, HotelDTO, HotelRequ
     @Override
     public HotelEntity requestDTOToEntity(HotelRequestDTO requestDTO) {
         HotelEntity entity = new HotelEntity();
+        entity.setId(requestDTO.getId());
+        entity.setUuid(requestDTO.getUuid());
+        entity.setCreationDate(requestDTO.getCreationDate());
+        entity.setUpdatedDate(requestDTO.getUpdatedDate());
         entity.setHotelName(requestDTO.getHotelName());
         entity.setPhoneNumber(requestDTO.getPhoneNumber());
         entity.setEmail(requestDTO.getEmail());

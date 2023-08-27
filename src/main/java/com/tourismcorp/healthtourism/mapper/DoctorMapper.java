@@ -32,8 +32,10 @@ public class DoctorMapper implements IBaseMapper<DoctorEntity, DoctorDTO, Doctor
         doctorDTO.setFirstName(entity.getFirstName());
         doctorDTO.setLastName(entity.getLastName());
         doctorDTO.setField(entity.getField());
+        doctorDTO.setEmail(entity.getEmail());
+        doctorDTO.setPassword(entity.getPassword());
+        doctorDTO.setUsername(entity.getUsername());
         doctorDTO.setRoles(roleMapper.entityListToDTOList(entity.getRoles()));
-        doctorDTO.setHospital(hospitalMapper.entityToDTO(entity.getHospital()));
 
         return doctorDTO;
     }
@@ -48,8 +50,10 @@ public class DoctorMapper implements IBaseMapper<DoctorEntity, DoctorDTO, Doctor
         doctorEntity.setFirstName(dto.getFirstName());
         doctorEntity.setLastName(dto.getLastName());
         doctorEntity.setField(dto.getField());
+        doctorEntity.setEmail(dto.getEmail());
+        doctorEntity.setPassword(dto.getPassword());
+        doctorEntity.setUsername(dto.getUsername());
         doctorEntity.setRoles(roleMapper.dtoListToEntityList(dto.getRoles()));
-        doctorEntity.setHospital(hospitalMapper.dtoToEntity(dto.getHospital()));
 
         return doctorEntity;
     }
@@ -84,8 +88,10 @@ public class DoctorMapper implements IBaseMapper<DoctorEntity, DoctorDTO, Doctor
         doctorEntity.setFirstName(requestDTO.getFirstName());
         doctorEntity.setLastName(requestDTO.getLastName());
         doctorEntity.setField(requestDTO.getField());
+        doctorEntity.setEmail(requestDTO.getEmail());
+        doctorEntity.setPassword(requestDTO.getPassword());
+        doctorEntity.setUsername(requestDTO.getUsername());
         doctorEntity.setRoles(roleMapper.dtoListToEntityList(requestDTO.getRoles()));
-        doctorEntity.setHospital(hospitalMapper.requestDTOToEntity(requestDTO.getHospital()));
 
         return doctorEntity;
     }
@@ -112,8 +118,13 @@ public class DoctorMapper implements IBaseMapper<DoctorEntity, DoctorDTO, Doctor
             entity.setField(requestDTO.getField());
         if (requestDTO.getRoles() != null)
             entity.setRoles(roleMapper.dtoListToEntityList(requestDTO.getRoles()));
-        if (requestDTO.getHospital() != null)
-         entity.setHospital(hospitalMapper.requestDTOToEntity(requestDTO.getHospital()));
+        if (requestDTO.getEmail() != null)
+            entity.setEmail(requestDTO.getEmail());
+        if (requestDTO.getPassword() != null)
+            entity.setPassword(requestDTO.getPassword());
+        if (requestDTO.getUsername() != null)
+            entity.setUsername(requestDTO.getUsername());
+
 
 
         return entity;
