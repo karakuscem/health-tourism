@@ -23,9 +23,6 @@ public class RoomEntity extends BaseEntity {
     @Column
     private Date exitDate;
 
-    @ManyToOne
-    @JoinColumn(name = "hotel_entity_id", nullable = false)
-    private HotelEntity hotel;
 
     /*
     @PreUpdate

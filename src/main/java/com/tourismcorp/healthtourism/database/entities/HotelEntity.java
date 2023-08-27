@@ -22,10 +22,12 @@ public class HotelEntity extends BaseEntity {
     @Column
     private String email;
 
-    @OneToMany(mappedBy = "hotel")
+    @OneToMany
+    @JoinColumn(name = "hotel_entity_id")
+    @OnDelete(action = OnDeleteAction.SET_NULL)
     private List<RoomEntity> room;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @OnDelete(action = OnDeleteAction.SET_NULL)
     private BankAccountEntity bankAccount;
 

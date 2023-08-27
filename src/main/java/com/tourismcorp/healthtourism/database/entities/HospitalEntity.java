@@ -19,10 +19,12 @@ public class HospitalEntity extends BaseEntity {
     @Column
     private String email;
 
-    @OneToMany(mappedBy = "hospital", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany
+    @JoinColumn(name = "hospital_entity_id")
+    @OnDelete(action = OnDeleteAction.SET_NULL)
     private List<DoctorEntity> doctor;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @OnDelete(action = OnDeleteAction.SET_NULL)
     private BankAccountEntity bankAccount;
 }

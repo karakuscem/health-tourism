@@ -17,10 +17,6 @@ public class DoctorEntity extends BaseEntity {
     @Column
     private String field;
 
-    @ManyToOne
-    @JoinColumn(name = "hospital_entity_id", nullable = false)
-    private HospitalEntity hospital;
-
     @Column
     private String username;
 
@@ -39,6 +35,6 @@ public class DoctorEntity extends BaseEntity {
     @ManyToMany(fetch = FetchType.LAZY)
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
-    @JoinColumn(name = "role_id", nullable = false)
+    @JoinColumn(name = "role_id")
     private List<RoleEntity> roles;
 }

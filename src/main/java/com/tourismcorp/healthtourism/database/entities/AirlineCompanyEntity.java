@@ -21,7 +21,9 @@ public class AirlineCompanyEntity extends BaseEntity {
     @Column
     private String email;
 
-    @OneToMany(mappedBy = "airlineCompany", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany
+    @JoinColumn(name = "airline_company_entity_id")
+    @OnDelete(action = OnDeleteAction.SET_NULL)
     private List<FlightEntity> flight;
 
     @ManyToOne
