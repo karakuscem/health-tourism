@@ -10,14 +10,12 @@ import java.util.Date;
 
 public class AppointmentRequestDTO extends BaseDTO {
     private DoctorRequestDTO doctor;
-    private UserRequestDTO patient;
+    private UserRequestDTO user;
     private Date date;
     private HotelRequestDTO hotel;
     private RoomRequestDTO room;
-    private Date roomDate;
     private HospitalRequestDTO hospital;
     private FlightRequestDTO flight;
     private SeatRequestDTO seat;
-    private Date flightDate;
 
 }

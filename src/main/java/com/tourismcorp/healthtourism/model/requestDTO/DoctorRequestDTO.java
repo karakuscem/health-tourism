@@ -19,5 +19,4 @@ public class DoctorRequestDTO extends BaseDTO {
 
     private String field;
 
-    private HospitalRequestDTO hospital;
 }

@@ -16,5 +16,4 @@ public class DoctorDTO extends BaseDTO {
     private String lastName;
     private List<RoleDTO> roles;
     private String field;
-    private HospitalDTO hospital;
 }

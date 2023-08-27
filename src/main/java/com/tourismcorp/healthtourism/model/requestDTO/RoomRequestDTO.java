@@ -14,8 +14,6 @@ public class RoomRequestDTO extends BaseDTO {
 
     private BigDecimal price;
 
-    private HotelRequestDTO hotel;
-
     private Boolean isReserved;
 
     private Date exitDate;
