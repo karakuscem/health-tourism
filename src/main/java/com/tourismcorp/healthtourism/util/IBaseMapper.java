@@ -1,5 +1,7 @@
 package com.tourismcorp.healthtourism.util;
 
+import org.springframework.data.domain.Page;
+
 import java.util.List;
 
 public interface IBaseMapper<E extends BaseEntity, D extends BaseDTO, R extends BaseDTO> {
@@ -17,4 +19,6 @@ public interface IBaseMapper<E extends BaseEntity, D extends BaseDTO, R extends 
     public List<E> requestDTOListToEntityList(List<R> dtoList);
 
     public E requestDTOToExistEntity(R requestDTO, E entity);
+
+    public Page<D> pageEntityToPageDTO(Page<E> entityPage);
 }

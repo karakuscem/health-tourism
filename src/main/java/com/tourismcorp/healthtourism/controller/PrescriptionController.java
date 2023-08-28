@@ -2,6 +2,7 @@ package com.tourismcorp.healthtourism.controller;
 
 import com.tourismcorp.healthtourism.database.entities.PrescriptionEntity;
 import com.tourismcorp.healthtourism.database.repositories.PrescriptionRepository;
+import com.tourismcorp.healthtourism.database.specification.PrescriptionSpecification;
 import com.tourismcorp.healthtourism.mapper.PrescriptionMapper;
 import com.tourismcorp.healthtourism.model.PrescriptionDTO;
 import com.tourismcorp.healthtourism.model.requestDTO.PrescriptionRequestDTO;
@@ -19,6 +20,7 @@ public class PrescriptionController extends BaseController<
         PrescriptionRequestDTO,
         PrescriptionMapper,
         PrescriptionRepository,
+        PrescriptionSpecification,
         PrescriptionService> {
 
     @Autowired

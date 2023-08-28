@@ -1,6 +1,11 @@
 package com.tourismcorp.healthtourism.util;
 
+import com.tourismcorp.healthtourism.model.requestDTO.BaseFilterRequestDTO;
 import jakarta.transaction.Transactional;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.Modifying;
 
 import java.util.List;
@@ -11,11 +16,14 @@ public abstract class BaseService<
         DTO extends BaseDTO,
         RequestDTO extends BaseDTO,
         Mapper extends IBaseMapper<Entity, DTO, RequestDTO>,
-        Repository extends IBaseRepository<Entity>> {
+        Repository extends IBaseRepository<Entity>,
+        Specification extends BaseSpecification<Entity>> {
 
     protected abstract Mapper getMapper();
 
     protected abstract Repository getRepository();
+
+    protected abstract Specification getSpecification();
 
     public DTO save(RequestDTO requestDTO) {
         Entity entity = getMapper().requestDTOToEntity(requestDTO);
@@ -60,5 +68,26 @@ public abstract class BaseService<
     public List<DTO> getAll() {
         List<Entity> entities = getRepository().findAll();
         return getMapper().entityListToDTOList(entities);
+    }
+
+    public Page<DTO> getAllWith(BaseFilterRequestDTO baseFilterRequestDTO) {
+        Pageable pageable;
+        if (baseFilterRequestDTO.getSortDTO() != null) {
+            if (baseFilterRequestDTO.getSortDTO().getDirectionEnum() == Sort.Direction.ASC) {
+                pageable = PageRequest.of(baseFilterRequestDTO.getPageNumber(),baseFilterRequestDTO.getPageSize(),
+                        Sort.by(baseFilterRequestDTO.getSortDTO().getColumnName()).ascending());
+            } else {
+                pageable = PageRequest.of(baseFilterRequestDTO.getPageNumber(),baseFilterRequestDTO.getPageSize(),
+                        Sort.by(baseFilterRequestDTO.getSortDTO().getColumnName()).descending());
+            }
+        } else {
+            pageable = PageRequest.of(baseFilterRequestDTO.getPageNumber(),baseFilterRequestDTO.getPageSize(),
+                    Sort.by("id").ascending());
+        }
+
+        getSpecification().setCriteriaList(baseFilterRequestDTO.getFilters());
+
+        Page<Entity> entityPage = getRepository().findAll(getSpecification(),pageable);
+        return getMapper().pageEntityToPageDTO(entityPage);
     }
 }

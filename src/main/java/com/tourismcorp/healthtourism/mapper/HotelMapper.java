@@ -6,6 +6,7 @@ import com.tourismcorp.healthtourism.model.requestDTO.HotelRequestDTO;
 import com.tourismcorp.healthtourism.util.IBaseMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -112,5 +113,10 @@ public class HotelMapper implements IBaseMapper<HotelEntity, HotelDTO, HotelRequ
             entity.setBankAccount(bankAccountMapper.requestDTOToEntity(requestDTO.getBankAccount()));
 
         return entity;
+    }
+
+    @Override
+    public Page<HotelDTO> pageEntityToPageDTO(Page<HotelEntity> entityPage) {
+        return entityPage.map(this::entityToDTO);
     }
 }

@@ -6,6 +6,7 @@ import com.tourismcorp.healthtourism.model.requestDTO.FlightRequestDTO;
 import com.tourismcorp.healthtourism.util.IBaseMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -129,5 +130,9 @@ public class FlightMapper implements IBaseMapper<FlightEntity, FlightDTO, Flight
         return entity;
     }
 
+    @Override
+    public Page<FlightDTO> pageEntityToPageDTO(Page<FlightEntity> entityPage) {
+        return entityPage.map(this::entityToDTO);
+    }
 
 }

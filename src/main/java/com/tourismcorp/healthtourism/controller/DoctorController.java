@@ -2,6 +2,7 @@ package com.tourismcorp.healthtourism.controller;
 
 import com.tourismcorp.healthtourism.database.entities.DoctorEntity;
 import com.tourismcorp.healthtourism.database.repositories.DoctorRepository;
+import com.tourismcorp.healthtourism.database.specification.DoctorSpecification;
 import com.tourismcorp.healthtourism.mapper.DoctorMapper;
 import com.tourismcorp.healthtourism.model.DoctorDTO;
 import com.tourismcorp.healthtourism.model.requestDTO.DoctorRequestDTO;
@@ -19,6 +20,7 @@ public class DoctorController extends BaseController<
         DoctorRequestDTO,
         DoctorMapper,
         DoctorRepository,
+        DoctorSpecification,
         DoctorService> {
 
     @Autowired

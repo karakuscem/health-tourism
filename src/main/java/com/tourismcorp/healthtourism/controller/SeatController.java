@@ -2,6 +2,7 @@ package com.tourismcorp.healthtourism.controller;
 
 import com.tourismcorp.healthtourism.database.entities.SeatEntity;
 import com.tourismcorp.healthtourism.database.repositories.SeatRepository;
+import com.tourismcorp.healthtourism.database.specification.SeatSpecification;
 import com.tourismcorp.healthtourism.mapper.SeatMapper;
 import com.tourismcorp.healthtourism.model.SeatDTO;
 import com.tourismcorp.healthtourism.model.requestDTO.SeatRequestDTO;
@@ -19,6 +20,7 @@ public class SeatController extends BaseController<
         SeatRequestDTO,
         SeatMapper,
         SeatRepository,
+        SeatSpecification,
         SeatService> {
 
     @Autowired

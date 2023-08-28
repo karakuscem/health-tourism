@@ -6,6 +6,7 @@ import com.tourismcorp.healthtourism.model.requestDTO.RoomRequestDTO;
 import com.tourismcorp.healthtourism.util.IBaseMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -110,5 +111,10 @@ public class RoomMapper implements IBaseMapper<RoomEntity, RoomDTO, RoomRequestD
             entity.setIsReserved(requestDTO.getIsReserved());
         return entity;
 
+    }
+
+    @Override
+    public Page<RoomDTO> pageEntityToPageDTO(Page<RoomEntity> entityPage) {
+        return entityPage.map(this::entityToDTO);
     }
 }

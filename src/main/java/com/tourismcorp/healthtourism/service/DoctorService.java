@@ -2,6 +2,7 @@ package com.tourismcorp.healthtourism.service;
 
 import com.tourismcorp.healthtourism.database.entities.DoctorEntity;
 import com.tourismcorp.healthtourism.database.repositories.DoctorRepository;
+import com.tourismcorp.healthtourism.database.specification.DoctorSpecification;
 import com.tourismcorp.healthtourism.mapper.DoctorMapper;
 import com.tourismcorp.healthtourism.model.DoctorDTO;
 import com.tourismcorp.healthtourism.model.requestDTO.DoctorRequestDTO;
@@ -15,13 +16,21 @@ public class DoctorService extends BaseService<
         DoctorDTO,
         DoctorRequestDTO,
         DoctorMapper,
-        DoctorRepository> {
+        DoctorRepository,
+        DoctorSpecification> {
+
+    private final DoctorRepository doctorRepository;
+
+    private final DoctorMapper doctorMapper;
+
+    private final DoctorSpecification doctorSpecification;
 
     @Autowired
-    DoctorMapper doctorMapper;
-
-    @Autowired
-    DoctorRepository doctorRepository;
+    public DoctorService(DoctorRepository doctorRepository, DoctorMapper doctorMapper, DoctorSpecification doctorSpecification) {
+        this.doctorRepository = doctorRepository;
+        this.doctorMapper = doctorMapper;
+        this.doctorSpecification = doctorSpecification;
+    }
 
     @Override
     protected DoctorMapper getMapper() {
@@ -31,5 +40,10 @@ public class DoctorService extends BaseService<
     @Override
     protected DoctorRepository getRepository() {
         return this.doctorRepository;
+    }
+
+    @Override
+    protected DoctorSpecification getSpecification() {
+        return this.doctorSpecification;
     }
 }

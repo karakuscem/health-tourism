@@ -6,6 +6,7 @@ import com.tourismcorp.healthtourism.model.requestDTO.UserRequestDTO;
 import com.tourismcorp.healthtourism.util.IBaseMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -129,5 +130,10 @@ public class UserMapper implements IBaseMapper<UserEntity, UserDTO, UserRequestD
             entity.setBankAccount(bankAccountMapper.requestDTOToEntity(requestDTO.getBankAccount()));
 
         return entity;
+    }
+
+    @Override
+    public Page<UserDTO> pageEntityToPageDTO(Page<UserEntity> entityPage) {
+        return entityPage.map(this::entityToDTO);
     }
 }

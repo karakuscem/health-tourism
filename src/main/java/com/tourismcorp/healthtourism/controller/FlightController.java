@@ -2,6 +2,7 @@ package com.tourismcorp.healthtourism.controller;
 
 import com.tourismcorp.healthtourism.database.entities.FlightEntity;
 import com.tourismcorp.healthtourism.database.repositories.FlightRepository;
+import com.tourismcorp.healthtourism.database.specification.FlightSpecification;
 import com.tourismcorp.healthtourism.mapper.FlightMapper;
 import com.tourismcorp.healthtourism.model.FlightDTO;
 import com.tourismcorp.healthtourism.model.requestDTO.FlightRequestDTO;
@@ -19,6 +20,7 @@ public class FlightController extends BaseController<
         FlightRequestDTO,
         FlightMapper,
         FlightRepository,
+        FlightSpecification,
         FlightService> {
 
     @Autowired

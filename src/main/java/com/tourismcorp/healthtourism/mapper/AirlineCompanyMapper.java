@@ -6,6 +6,7 @@ import com.tourismcorp.healthtourism.model.requestDTO.AirlineCompanyRequestDTO;
 import com.tourismcorp.healthtourism.util.IBaseMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -114,5 +115,10 @@ public class AirlineCompanyMapper implements IBaseMapper<AirlineCompanyEntity,
         entity.setBankAccount(bankAccountMapper.requestDTOToEntity(requestDTO.getBankAccount()));
 
         return entity;
+    }
+
+    @Override
+    public Page<AirlineCompanyDTO> pageEntityToPageDTO(Page<AirlineCompanyEntity> entityPage) {
+        return entityPage.map(this::entityToDTO);
     }
 }

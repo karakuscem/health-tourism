@@ -2,6 +2,7 @@ package com.tourismcorp.healthtourism.controller;
 
 import com.tourismcorp.healthtourism.database.entities.UserEntity;
 import com.tourismcorp.healthtourism.database.repositories.UserRepository;
+import com.tourismcorp.healthtourism.database.specification.UserSpecification;
 import com.tourismcorp.healthtourism.mapper.UserMapper;
 import com.tourismcorp.healthtourism.model.UserDTO;
 import com.tourismcorp.healthtourism.model.requestDTO.UserRequestDTO;
@@ -19,6 +20,7 @@ public class UserController extends BaseController<
         UserRequestDTO,
         UserMapper,
         UserRepository,
+        UserSpecification,
         UserService> {
 
     @Autowired

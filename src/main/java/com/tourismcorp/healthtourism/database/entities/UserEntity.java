@@ -37,7 +37,7 @@ public class UserEntity extends BaseEntity {
     @JoinColumn(name = "role_id", nullable = false)
     private List<RoleEntity> roles;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @OnDelete(action = OnDeleteAction.SET_NULL)
     private BankAccountEntity bankAccount;
 

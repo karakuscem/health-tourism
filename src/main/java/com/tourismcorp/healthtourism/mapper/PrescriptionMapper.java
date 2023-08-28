@@ -5,6 +5,7 @@ import com.tourismcorp.healthtourism.model.PrescriptionDTO;
 import com.tourismcorp.healthtourism.model.requestDTO.PrescriptionRequestDTO;
 import com.tourismcorp.healthtourism.util.IBaseMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -96,5 +97,10 @@ public class PrescriptionMapper implements IBaseMapper<PrescriptionEntity, Presc
             entity.setPrescription(requestDTO.getPrescription());
 
         return entity;
+    }
+
+    @Override
+    public Page<PrescriptionDTO> pageEntityToPageDTO(Page<PrescriptionEntity> entityPage) {
+        return entityPage.map(this::entityToDTO);
     }
 }

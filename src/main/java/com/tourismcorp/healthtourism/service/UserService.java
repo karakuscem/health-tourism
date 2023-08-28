@@ -2,6 +2,7 @@ package com.tourismcorp.healthtourism.service;
 
 import com.tourismcorp.healthtourism.database.entities.UserEntity;
 import com.tourismcorp.healthtourism.database.repositories.UserRepository;
+import com.tourismcorp.healthtourism.database.specification.UserSpecification;
 import com.tourismcorp.healthtourism.mapper.UserMapper;
 import com.tourismcorp.healthtourism.model.UserDTO;
 import com.tourismcorp.healthtourism.model.requestDTO.UserRequestDTO;
@@ -15,13 +16,22 @@ public class UserService extends BaseService<
         UserDTO,
         UserRequestDTO,
         UserMapper,
-        UserRepository> {
+        UserRepository,
+        UserSpecification> {
+
+
+    private final UserRepository userRepository;
+
+    private final UserMapper userMapper;
+
+    private final UserSpecification userSpecification;
 
     @Autowired
-    UserMapper userMapper;
-
-    @Autowired
-    UserRepository userRepository;
+    public UserService(UserRepository userRepository, UserMapper userMapper, UserSpecification userSpecification) {
+        this.userRepository = userRepository;
+        this.userMapper = userMapper;
+        this.userSpecification = userSpecification;
+    }
 
     @Override
     protected UserMapper getMapper() {
@@ -31,5 +41,10 @@ public class UserService extends BaseService<
     @Override
     protected UserRepository getRepository() {
         return this.userRepository;
+    }
+
+    @Override
+    protected UserSpecification getSpecification() {
+        return this.userSpecification;
     }
 }

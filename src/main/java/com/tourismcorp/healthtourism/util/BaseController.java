@@ -1,5 +1,7 @@
 package com.tourismcorp.healthtourism.util;
 
+import com.tourismcorp.healthtourism.model.requestDTO.BaseFilterRequestDTO;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,13 +15,19 @@ public abstract class BaseController<
         RequestDTO extends BaseDTO,
         Mapper extends IBaseMapper<Entity, DTO, RequestDTO>,
         Repository extends IBaseRepository<Entity>,
-        Service extends BaseService<Entity, DTO, RequestDTO, Mapper, Repository>> {
+        Specification extends BaseSpecification<Entity>,
+        Service extends BaseService<Entity, DTO, RequestDTO, Mapper, Repository, Specification>> {
 
     protected abstract Service getService();
 
     @PostMapping
     public ResponseEntity<DTO> save(@RequestBody RequestDTO requestDTO) {
         return new ResponseEntity<>(getService().save(requestDTO), HttpStatus.CREATED);
+    }
+
+    @PostMapping("get-all-filter")
+    public ResponseEntity<Page<DTO>> getAllWithFilter(@RequestBody BaseFilterRequestDTO baseFilterRequestDTO) {
+        return new ResponseEntity<>(getService().getAllWith(baseFilterRequestDTO), HttpStatus.OK);
     }
 
     @PutMapping("{uuid}")

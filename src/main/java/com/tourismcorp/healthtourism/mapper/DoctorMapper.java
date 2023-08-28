@@ -6,6 +6,7 @@ import com.tourismcorp.healthtourism.model.requestDTO.DoctorRequestDTO;
 import com.tourismcorp.healthtourism.util.IBaseMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -128,5 +129,9 @@ public class DoctorMapper implements IBaseMapper<DoctorEntity, DoctorDTO, Doctor
 
 
         return entity;
+    }
+
+    public Page<DoctorDTO> pageEntityToPageDTO(Page<DoctorEntity> entityPage) {
+        return entityPage.map(this::entityToDTO);
     }
 }

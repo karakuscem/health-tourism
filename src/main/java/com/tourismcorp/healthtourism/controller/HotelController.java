@@ -2,6 +2,7 @@ package com.tourismcorp.healthtourism.controller;
 
 import com.tourismcorp.healthtourism.database.entities.HotelEntity;
 import com.tourismcorp.healthtourism.database.repositories.HotelRepository;
+import com.tourismcorp.healthtourism.database.specification.HotelSpecification;
 import com.tourismcorp.healthtourism.mapper.HotelMapper;
 import com.tourismcorp.healthtourism.model.HotelDTO;
 import com.tourismcorp.healthtourism.model.requestDTO.HotelRequestDTO;
@@ -19,6 +20,7 @@ public class HotelController extends BaseController<
         HotelRequestDTO,
         HotelMapper,
         HotelRepository,
+        HotelSpecification,
         HotelService> {
 
     @Autowired

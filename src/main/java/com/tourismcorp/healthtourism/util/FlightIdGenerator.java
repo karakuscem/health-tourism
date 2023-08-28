@@ -1,6 +1,6 @@
 package com.tourismcorp.healthtourism.util;
 
-public class FlightIdGenerator{
+public class FlightIdGenerator {
 
     private static final long INITIAL_VALUE = 1000;
     private static final long INCREMENT_SIZE = 100;
@@ -9,7 +9,7 @@ public class FlightIdGenerator{
 
     public static String getFlightNumber() {
         currentValue += INCREMENT_SIZE;
-        return "TK" + "-" + "-" + currentValue + "-" + "-" + Math.round(Math.random() * 1000000);
+        return "TK" + "-" + currentValue + "-" + Math.round(Math.random() * 1000000);
     }
 
 }

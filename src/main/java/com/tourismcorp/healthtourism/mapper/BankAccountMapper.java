@@ -4,6 +4,7 @@ import com.tourismcorp.healthtourism.database.entities.BankAccountEntity;
 import com.tourismcorp.healthtourism.model.BankAccountDTO;
 import com.tourismcorp.healthtourism.model.requestDTO.BankAccountRequestDTO;
 import com.tourismcorp.healthtourism.util.IBaseMapper;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -95,5 +96,10 @@ public class BankAccountMapper implements IBaseMapper<BankAccountEntity, BankAcc
             entity.setBalance(requestDTO.getBalance());
 
         return entity;
+    }
+
+    @Override
+    public Page<BankAccountDTO> pageEntityToPageDTO(Page<BankAccountEntity> entityPage) {
+        return entityPage.map(this::entityToDTO);
     }
 }

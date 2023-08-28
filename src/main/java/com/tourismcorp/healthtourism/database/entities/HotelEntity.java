@@ -27,7 +27,7 @@ public class HotelEntity extends BaseEntity {
     @OnDelete(action = OnDeleteAction.SET_NULL)
     private List<RoomEntity> room;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @OnDelete(action = OnDeleteAction.SET_NULL)
     private BankAccountEntity bankAccount;
 

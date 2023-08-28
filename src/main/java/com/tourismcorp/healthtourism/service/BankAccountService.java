@@ -2,6 +2,7 @@ package com.tourismcorp.healthtourism.service;
 
 import com.tourismcorp.healthtourism.database.entities.BankAccountEntity;
 import com.tourismcorp.healthtourism.database.repositories.BankAccountRepository;
+import com.tourismcorp.healthtourism.database.specification.BankAccountSpecification;
 import com.tourismcorp.healthtourism.mapper.BankAccountMapper;
 import com.tourismcorp.healthtourism.model.BankAccountDTO;
 import com.tourismcorp.healthtourism.model.requestDTO.BankAccountRequestDTO;
@@ -19,13 +20,21 @@ public class BankAccountService extends BaseService<
         BankAccountDTO,
         BankAccountRequestDTO,
         BankAccountMapper,
-        BankAccountRepository> {
+        BankAccountRepository,
+        BankAccountSpecification> {
+
+    private final BankAccountRepository bankAccountRepository;
+
+    private final BankAccountMapper bankAccountMapper;
+
+    private final BankAccountSpecification bankAccountSpecification;
 
     @Autowired
-    BankAccountMapper bankAccountMapper;
-
-    @Autowired
-    BankAccountRepository bankAccountRepository;
+    public BankAccountService(BankAccountRepository bankAccountRepository, BankAccountMapper bankAccountMapper, BankAccountSpecification bankAccountSpecification) {
+        this.bankAccountRepository = bankAccountRepository;
+        this.bankAccountMapper = bankAccountMapper;
+        this.bankAccountSpecification = bankAccountSpecification;
+    }
 
 
     @Override
@@ -36,6 +45,11 @@ public class BankAccountService extends BaseService<
     @Override
     protected BankAccountRepository getRepository() {
         return this.bankAccountRepository;
+    }
+
+    @Override
+    protected BankAccountSpecification getSpecification() {
+        return this.bankAccountSpecification;
     }
 
 }

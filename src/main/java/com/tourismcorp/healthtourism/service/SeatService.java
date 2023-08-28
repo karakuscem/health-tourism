@@ -2,6 +2,7 @@ package com.tourismcorp.healthtourism.service;
 
 import com.tourismcorp.healthtourism.database.entities.SeatEntity;
 import com.tourismcorp.healthtourism.database.repositories.SeatRepository;
+import com.tourismcorp.healthtourism.database.specification.SeatSpecification;
 import com.tourismcorp.healthtourism.mapper.SeatMapper;
 import com.tourismcorp.healthtourism.model.SeatDTO;
 import com.tourismcorp.healthtourism.model.requestDTO.SeatRequestDTO;
@@ -15,13 +16,22 @@ public class SeatService extends BaseService<
         SeatDTO,
         SeatRequestDTO,
         SeatMapper,
-        SeatRepository> {
+        SeatRepository,
+        SeatSpecification> {
+
+
+    private final SeatRepository seatRepository;
+
+    private final SeatMapper seatMapper;
+
+    private final SeatSpecification seatSpecification;
 
     @Autowired
-    SeatMapper seatMapper;
-
-    @Autowired
-    SeatRepository seatRepository;
+    public SeatService(SeatRepository seatRepository, SeatMapper seatMapper, SeatSpecification seatSpecification) {
+        this.seatRepository = seatRepository;
+        this.seatMapper = seatMapper;
+        this.seatSpecification = seatSpecification;
+    }
 
     @Override
     protected SeatMapper getMapper() {
@@ -31,5 +41,10 @@ public class SeatService extends BaseService<
     @Override
     protected SeatRepository getRepository() {
         return this.seatRepository;
+    }
+
+    @Override
+    protected SeatSpecification getSpecification() {
+        return this.seatSpecification;
     }
 }

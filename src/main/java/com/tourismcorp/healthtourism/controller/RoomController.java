@@ -2,6 +2,7 @@ package com.tourismcorp.healthtourism.controller;
 
 import com.tourismcorp.healthtourism.database.entities.RoomEntity;
 import com.tourismcorp.healthtourism.database.repositories.RoomRepository;
+import com.tourismcorp.healthtourism.database.specification.RoomSpecification;
 import com.tourismcorp.healthtourism.mapper.RoomMapper;
 import com.tourismcorp.healthtourism.model.RoomDTO;
 import com.tourismcorp.healthtourism.model.requestDTO.RoomRequestDTO;
@@ -19,6 +20,7 @@ public class RoomController extends BaseController<
         RoomRequestDTO,
         RoomMapper,
         RoomRepository,
+        RoomSpecification,
         RoomService> {
 
     @Autowired

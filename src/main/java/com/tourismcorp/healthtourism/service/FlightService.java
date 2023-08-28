@@ -2,6 +2,7 @@ package com.tourismcorp.healthtourism.service;
 
 import com.tourismcorp.healthtourism.database.entities.FlightEntity;
 import com.tourismcorp.healthtourism.database.repositories.FlightRepository;
+import com.tourismcorp.healthtourism.database.specification.FlightSpecification;
 import com.tourismcorp.healthtourism.mapper.FlightMapper;
 import com.tourismcorp.healthtourism.model.FlightDTO;
 import com.tourismcorp.healthtourism.model.requestDTO.FlightRequestDTO;
@@ -15,13 +16,22 @@ public class FlightService extends BaseService<
         FlightDTO,
         FlightRequestDTO,
         FlightMapper,
-        FlightRepository> {
+        FlightRepository,
+        FlightSpecification> {
+
+
+    private final FlightRepository flightRepository;
+
+    private final FlightMapper flightMapper;
+
+    private final FlightSpecification flightSpecification;
 
     @Autowired
-    FlightMapper flightMapper;
-
-    @Autowired
-    FlightRepository flightRepository;
+    public FlightService(FlightRepository flightRepository, FlightMapper flightMapper, FlightSpecification flightSpecification) {
+        this.flightRepository = flightRepository;
+        this.flightMapper = flightMapper;
+        this.flightSpecification = flightSpecification;
+    }
 
     @Override
     protected FlightMapper getMapper() {
@@ -31,5 +41,10 @@ public class FlightService extends BaseService<
     @Override
     protected FlightRepository getRepository() {
         return this.flightRepository;
+    }
+
+    @Override
+    protected FlightSpecification getSpecification() {
+        return this.flightSpecification;
     }
 }

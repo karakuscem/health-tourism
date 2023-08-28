@@ -2,6 +2,7 @@ package com.tourismcorp.healthtourism.controller;
 
 import com.tourismcorp.healthtourism.database.entities.AppointmentEntity;
 import com.tourismcorp.healthtourism.database.repositories.AppointmentRepository;
+import com.tourismcorp.healthtourism.database.specification.AppointmentSpecification;
 import com.tourismcorp.healthtourism.mapper.AppointmentMapper;
 import com.tourismcorp.healthtourism.model.AppointmentDTO;
 import com.tourismcorp.healthtourism.model.requestDTO.AppointmentRequestDTO;
@@ -19,6 +20,7 @@ public class AppointmentController extends BaseController<
         AppointmentRequestDTO,
         AppointmentMapper,
         AppointmentRepository,
+        AppointmentSpecification,
         AppointmentService> {
 
     @Autowired

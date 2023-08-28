@@ -2,6 +2,7 @@ package com.tourismcorp.healthtourism.service;
 
 import com.tourismcorp.healthtourism.database.entities.RoomEntity;
 import com.tourismcorp.healthtourism.database.repositories.RoomRepository;
+import com.tourismcorp.healthtourism.database.specification.RoomSpecification;
 import com.tourismcorp.healthtourism.mapper.RoomMapper;
 import com.tourismcorp.healthtourism.model.RoomDTO;
 import com.tourismcorp.healthtourism.model.requestDTO.RoomRequestDTO;
@@ -15,13 +16,22 @@ public class RoomService extends BaseService<
         RoomDTO,
         RoomRequestDTO,
         RoomMapper,
-        RoomRepository> {
+        RoomRepository,
+        RoomSpecification> {
+
+
+    private final RoomRepository roomRepository;
+
+    private final RoomMapper roomMapper;
+
+    private final RoomSpecification roomSpecification;
 
     @Autowired
-    RoomMapper roomMapper;
-
-    @Autowired
-    RoomRepository roomRepository;
+    public RoomService(RoomRepository roomRepository, RoomMapper roomMapper, RoomSpecification roomSpecification) {
+        this.roomRepository = roomRepository;
+        this.roomMapper = roomMapper;
+        this.roomSpecification = roomSpecification;
+    }
 
     @Override
     protected RoomMapper getMapper() {
@@ -31,5 +41,10 @@ public class RoomService extends BaseService<
     @Override
     protected RoomRepository getRepository() {
         return this.roomRepository;
+    }
+
+    @Override
+    protected RoomSpecification getSpecification() {
+        return this.roomSpecification;
     }
 }

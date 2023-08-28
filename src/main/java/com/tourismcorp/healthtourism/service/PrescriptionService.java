@@ -2,6 +2,7 @@ package com.tourismcorp.healthtourism.service;
 
 import com.tourismcorp.healthtourism.database.entities.PrescriptionEntity;
 import com.tourismcorp.healthtourism.database.repositories.PrescriptionRepository;
+import com.tourismcorp.healthtourism.database.specification.PrescriptionSpecification;
 import com.tourismcorp.healthtourism.mapper.PrescriptionMapper;
 import com.tourismcorp.healthtourism.model.PrescriptionDTO;
 import com.tourismcorp.healthtourism.model.requestDTO.PrescriptionRequestDTO;
@@ -15,13 +16,22 @@ public class PrescriptionService extends BaseService<
         PrescriptionDTO,
         PrescriptionRequestDTO,
         PrescriptionMapper,
-        PrescriptionRepository> {
+        PrescriptionRepository,
+        PrescriptionSpecification> {
+
+
+    private final PrescriptionRepository prescriptionRepository;
+
+    private final PrescriptionMapper prescriptionMapper;
+
+    private final PrescriptionSpecification prescriptionSpecification;
 
     @Autowired
-    PrescriptionMapper prescriptionMapper;
-
-    @Autowired
-    PrescriptionRepository prescriptionRepository;
+    public PrescriptionService(PrescriptionRepository prescriptionRepository, PrescriptionMapper prescriptionMapper, PrescriptionSpecification prescriptionSpecification) {
+        this.prescriptionRepository = prescriptionRepository;
+        this.prescriptionMapper = prescriptionMapper;
+        this.prescriptionSpecification = prescriptionSpecification;
+    }
 
     @Override
     protected PrescriptionMapper getMapper() {
@@ -31,5 +41,10 @@ public class PrescriptionService extends BaseService<
     @Override
     protected PrescriptionRepository getRepository() {
         return this.prescriptionRepository;
+    }
+
+    @Override
+    protected PrescriptionSpecification getSpecification() {
+        return this.prescriptionSpecification;
     }
 }

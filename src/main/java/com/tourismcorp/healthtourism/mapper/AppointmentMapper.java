@@ -5,6 +5,7 @@ import com.tourismcorp.healthtourism.model.AppointmentDTO;
 import com.tourismcorp.healthtourism.model.requestDTO.AppointmentRequestDTO;
 import com.tourismcorp.healthtourism.util.IBaseMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -140,5 +141,10 @@ public class AppointmentMapper implements IBaseMapper<AppointmentEntity, Appoint
 
 
         return entity;
+    }
+
+    @Override
+    public Page<AppointmentDTO> pageEntityToPageDTO(Page<AppointmentEntity> entityPage) {
+        return entityPage.map(this::entityToDTO);
     }
 }

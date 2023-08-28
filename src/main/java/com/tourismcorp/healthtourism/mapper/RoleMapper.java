@@ -6,6 +6,7 @@ import com.tourismcorp.healthtourism.model.requestDTO.RoleRequestDTO;
 import com.tourismcorp.healthtourism.util.IBaseMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -108,5 +109,10 @@ public class RoleMapper implements IBaseMapper<RoleEntity, RoleDTO, RoleRequestD
             entity.setUsers(userMapper.requestDTOListToEntityList(requestDTO.getUsers()));
 
         return entity;
+    }
+
+    @Override
+    public Page<RoleDTO> pageEntityToPageDTO(Page<RoleEntity> entityPage) {
+        return entityPage.map(this::entityToDTO);
     }
 }

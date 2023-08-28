@@ -24,7 +24,7 @@ public class HospitalEntity extends BaseEntity {
     @OnDelete(action = OnDeleteAction.SET_NULL)
     private List<DoctorEntity> doctor;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @OnDelete(action = OnDeleteAction.SET_NULL)
     private BankAccountEntity bankAccount;
 }

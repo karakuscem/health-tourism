@@ -2,6 +2,7 @@ package com.tourismcorp.healthtourism.controller;
 
 import com.tourismcorp.healthtourism.database.entities.RoleEntity;
 import com.tourismcorp.healthtourism.database.repositories.RoleRepository;
+import com.tourismcorp.healthtourism.database.specification.RoleSpecification;
 import com.tourismcorp.healthtourism.mapper.RoleMapper;
 import com.tourismcorp.healthtourism.model.RoleDTO;
 import com.tourismcorp.healthtourism.model.requestDTO.RoleRequestDTO;
@@ -19,6 +20,7 @@ public class RoleController extends BaseController<
         RoleRequestDTO,
         RoleMapper,
         RoleRepository,
+        RoleSpecification,
         RoleService> {
 
     @Autowired

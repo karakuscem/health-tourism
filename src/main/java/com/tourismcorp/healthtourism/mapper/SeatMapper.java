@@ -6,6 +6,7 @@ import com.tourismcorp.healthtourism.model.requestDTO.SeatRequestDTO;
 import com.tourismcorp.healthtourism.util.IBaseMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -98,5 +99,10 @@ public class SeatMapper implements IBaseMapper<SeatEntity, SeatDTO, SeatRequestD
 
         return entity;
 
+    }
+
+    @Override
+    public Page<SeatDTO> pageEntityToPageDTO(Page<SeatEntity> entityPage) {
+        return entityPage.map(this::entityToDTO);
     }
 }

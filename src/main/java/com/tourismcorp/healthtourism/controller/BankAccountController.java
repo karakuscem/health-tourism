@@ -2,6 +2,7 @@ package com.tourismcorp.healthtourism.controller;
 
 import com.tourismcorp.healthtourism.database.entities.BankAccountEntity;
 import com.tourismcorp.healthtourism.database.repositories.BankAccountRepository;
+import com.tourismcorp.healthtourism.database.specification.BankAccountSpecification;
 import com.tourismcorp.healthtourism.mapper.BankAccountMapper;
 import com.tourismcorp.healthtourism.model.BankAccountDTO;
 import com.tourismcorp.healthtourism.model.requestDTO.BankAccountRequestDTO;
@@ -19,6 +20,7 @@ public class BankAccountController extends BaseController<
         BankAccountRequestDTO,
         BankAccountMapper,
         BankAccountRepository,
+        BankAccountSpecification,
         BankAccountService> {
 
     @Autowired

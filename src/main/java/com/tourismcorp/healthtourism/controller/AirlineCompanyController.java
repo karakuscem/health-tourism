@@ -2,6 +2,7 @@ package com.tourismcorp.healthtourism.controller;
 
 import com.tourismcorp.healthtourism.database.entities.AirlineCompanyEntity;
 import com.tourismcorp.healthtourism.database.repositories.AirlineCompanyRepository;
+import com.tourismcorp.healthtourism.database.specification.AirlineCompanySpecification;
 import com.tourismcorp.healthtourism.mapper.AirlineCompanyMapper;
 import com.tourismcorp.healthtourism.model.AirlineCompanyDTO;
 import com.tourismcorp.healthtourism.model.requestDTO.AirlineCompanyRequestDTO;
@@ -19,6 +20,7 @@ public class AirlineCompanyController extends BaseController<
         AirlineCompanyRequestDTO,
         AirlineCompanyMapper,
         AirlineCompanyRepository,
+        AirlineCompanySpecification,
         AirlineCompanyService> {
 
     private final AirlineCompanyService airlineCompanyService;
