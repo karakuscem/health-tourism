@@ -35,7 +35,10 @@ public class HospitalMapper implements IBaseMapper<HospitalEntity, HospitalDTO, 
         dto.setPhoneNumber(entity.getPhoneNumber());
         dto.setEmail(entity.getEmail());
         dto.setDoctor(doctorMapper.entityListToDTOList(entity.getDoctor()));
-        dto.setBankAccount(bankAccountMapper.entityToDTO(entity.getBankAccount()));
+        if (entity.getBankAccount() == null)
+            dto.setBankAccount(null);
+        else
+            dto.setBankAccount(bankAccountMapper.entityToDTO(entity.getBankAccount()));
 
         return dto;
     }
@@ -51,7 +54,10 @@ public class HospitalMapper implements IBaseMapper<HospitalEntity, HospitalDTO, 
         entity.setPhoneNumber(dto.getPhoneNumber());
         entity.setEmail(dto.getEmail());
         entity.setDoctor(doctorMapper.dtoListToEntityList(dto.getDoctor()));
-        entity.setBankAccount(bankAccountMapper.dtoToEntity(dto.getBankAccount()));
+        if (dto.getBankAccount() == null)
+            entity.setBankAccount(null);
+        else
+            entity.setBankAccount(bankAccountMapper.dtoToEntity(dto.getBankAccount()));
 
         return entity;
     }
@@ -87,7 +93,10 @@ public class HospitalMapper implements IBaseMapper<HospitalEntity, HospitalDTO, 
         entity.setPhoneNumber(requestDTO.getPhoneNumber());
         entity.setEmail(requestDTO.getEmail());
         entity.setDoctor(doctorMapper.requestDTOListToEntityList(requestDTO.getDoctor()));
-        entity.setBankAccount(bankAccountMapper.requestDTOToEntity(requestDTO.getBankAccount()));
+        if (requestDTO.getBankAccount() == null)
+            entity.setBankAccount(null);
+        else
+            entity.setBankAccount(bankAccountMapper.requestDTOToEntity(requestDTO.getBankAccount()));
 
         return entity;
     }

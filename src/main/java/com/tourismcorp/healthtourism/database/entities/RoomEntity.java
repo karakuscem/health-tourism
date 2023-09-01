@@ -21,7 +21,7 @@ public class RoomEntity extends BaseEntity {
     private Boolean isReserved;
 
     @Column
-    private Date exitDate;
+    private Date reservationDate;
 
 
     /*

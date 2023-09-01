@@ -36,7 +36,10 @@ public class AirlineCompanyMapper implements IBaseMapper<AirlineCompanyEntity,
         airlineCompanyDTO.setPhoneNumber(entity.getPhoneNumber());
         airlineCompanyDTO.setEmail(entity.getEmail());
         airlineCompanyDTO.setFlight(flightMapper.entityListToDTOList(entity.getFlight()));
-        airlineCompanyDTO.setBankAccount(bankAccountMapper.entityToDTO(entity.getBankAccount()));
+        if (entity.getBankAccount() == null)
+            airlineCompanyDTO.setBankAccount(null);
+        else
+            airlineCompanyDTO.setBankAccount(bankAccountMapper.entityToDTO(entity.getBankAccount()));
 
         return airlineCompanyDTO;
     }
@@ -52,7 +55,10 @@ public class AirlineCompanyMapper implements IBaseMapper<AirlineCompanyEntity,
         airlineCompanyEntity.setPhoneNumber(dto.getPhoneNumber());
         airlineCompanyEntity.setEmail(dto.getEmail());
         airlineCompanyEntity.setFlight(flightMapper.dtoListToEntityList(dto.getFlight()));
-        airlineCompanyEntity.setBankAccount(bankAccountMapper.dtoToEntity(dto.getBankAccount()));
+        if (dto.getBankAccount() == null)
+            airlineCompanyEntity.setBankAccount(null);
+        else
+            airlineCompanyEntity.setBankAccount(bankAccountMapper.dtoToEntity(dto.getBankAccount()));
 
         return airlineCompanyEntity;
     }
@@ -88,7 +94,10 @@ public class AirlineCompanyMapper implements IBaseMapper<AirlineCompanyEntity,
         airlineCompanyEntity.setPhoneNumber(requestDTO.getPhoneNumber());
         airlineCompanyEntity.setEmail(requestDTO.getEmail());
         airlineCompanyEntity.setFlight(flightMapper.requestDTOListToEntityList(requestDTO.getFlight()));
-        airlineCompanyEntity.setBankAccount(bankAccountMapper.requestDTOToEntity(requestDTO.getBankAccount()));
+        if (requestDTO.getBankAccount() == null)
+            airlineCompanyEntity.setBankAccount(null);
+        else
+            airlineCompanyEntity.setBankAccount(bankAccountMapper.requestDTOToEntity(requestDTO.getBankAccount()));
 
         return airlineCompanyEntity;
     }
@@ -111,8 +120,10 @@ public class AirlineCompanyMapper implements IBaseMapper<AirlineCompanyEntity,
             entity.setPhoneNumber(requestDTO.getPhoneNumber());
         if (requestDTO.getEmail() != null)
             entity.setEmail(requestDTO.getEmail());
-        entity.setFlight(flightMapper.requestDTOListToEntityList(requestDTO.getFlight()));
-        entity.setBankAccount(bankAccountMapper.requestDTOToEntity(requestDTO.getBankAccount()));
+        if (requestDTO.getFlight() != null)
+            entity.setFlight(flightMapper.requestDTOListToEntityList(requestDTO.getFlight()));
+        if (requestDTO.getBankAccount() != null)
+            entity.setBankAccount(bankAccountMapper.requestDTOToEntity(requestDTO.getBankAccount()));
 
         return entity;
     }

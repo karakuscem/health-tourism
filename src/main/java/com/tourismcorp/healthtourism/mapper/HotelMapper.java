@@ -35,7 +35,10 @@ public class HotelMapper implements IBaseMapper<HotelEntity, HotelDTO, HotelRequ
         dto.setPhoneNumber(entity.getPhoneNumber());
         dto.setEmail(entity.getEmail());
         dto.setRoom(roomMapper.entityListToDTOList(entity.getRoom()));
-        dto.setBankAccount(bankAccountMapper.entityToDTO(entity.getBankAccount()));
+        if (entity.getBankAccount() == null)
+            dto.setBankAccount(null);
+        else
+            dto.setBankAccount(bankAccountMapper.entityToDTO(entity.getBankAccount()));
 
         return dto;
     }
@@ -51,7 +54,10 @@ public class HotelMapper implements IBaseMapper<HotelEntity, HotelDTO, HotelRequ
         entity.setPhoneNumber(dto.getPhoneNumber());
         entity.setEmail(dto.getEmail());
         entity.setRoom(roomMapper.dtoListToEntityList(dto.getRoom()));
-        entity.setBankAccount(bankAccountMapper.dtoToEntity(dto.getBankAccount()));
+        if (dto.getBankAccount() == null)
+            entity.setBankAccount(null);
+        else
+            entity.setBankAccount(bankAccountMapper.dtoToEntity(dto.getBankAccount()));
 
         return entity;
     }
@@ -85,7 +91,10 @@ public class HotelMapper implements IBaseMapper<HotelEntity, HotelDTO, HotelRequ
         entity.setPhoneNumber(requestDTO.getPhoneNumber());
         entity.setEmail(requestDTO.getEmail());
         entity.setRoom(roomMapper.requestDTOListToEntityList(requestDTO.getRoom()));
-        entity.setBankAccount(bankAccountMapper.requestDTOToEntity(requestDTO.getBankAccount()));
+        if (requestDTO.getBankAccount() == null)
+            entity.setBankAccount(null);
+        else
+            entity.setBankAccount(bankAccountMapper.requestDTOToEntity(requestDTO.getBankAccount()));
 
         return entity;
     }

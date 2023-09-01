@@ -37,7 +37,10 @@ public class UserMapper implements IBaseMapper<UserEntity, UserDTO, UserRequestD
         userDTO.setPassword(entity.getPassword());
         userDTO.setRoles(roleMapper.entityListToDTOList(entity.getRoles()));
         userDTO.setEmail(entity.getEmail());
-        userDTO.setBankAccount(bankAccountMapper.entityToDTO(entity.getBankAccount()));
+        if (entity.getBankAccount() == null)
+            userDTO.setBankAccount(null);
+        else
+            userDTO.setBankAccount(bankAccountMapper.entityToDTO(entity.getBankAccount()));
 
         return userDTO;
     }
@@ -55,7 +58,10 @@ public class UserMapper implements IBaseMapper<UserEntity, UserDTO, UserRequestD
         userEntity.setPassword(dto.getPassword());
         userEntity.setRoles(roleMapper.dtoListToEntityList(dto.getRoles()));
         userEntity.setEmail(dto.getEmail());
-        userEntity.setBankAccount(bankAccountMapper.dtoToEntity(dto.getBankAccount()));
+       if (dto.getBankAccount() == null)
+            userEntity.setBankAccount(null);
+        else
+            userEntity.setBankAccount(bankAccountMapper.dtoToEntity(dto.getBankAccount()));
 
         return userEntity;
     }
@@ -95,7 +101,10 @@ public class UserMapper implements IBaseMapper<UserEntity, UserDTO, UserRequestD
         userEntity.setPassword(requestDTO.getPassword());
         userEntity.setRoles(roleMapper.requestDTOListToEntityList(requestDTO.getRoles()));
         userEntity.setEmail(requestDTO.getEmail());
-        userEntity.setBankAccount(bankAccountMapper.requestDTOToEntity(requestDTO.getBankAccount()));
+        if (requestDTO.getBankAccount() == null)
+            userEntity.setBankAccount(null);
+        else
+            userEntity.setBankAccount(bankAccountMapper.requestDTOToEntity(requestDTO.getBankAccount()));
 
         return userEntity;
     }

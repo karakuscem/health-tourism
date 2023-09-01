@@ -27,7 +27,7 @@ public abstract class BaseController<
 
     @PostMapping("get-all-filter")
     public ResponseEntity<Page<DTO>> getAllWithFilter(@RequestBody BaseFilterRequestDTO baseFilterRequestDTO) {
-        return new ResponseEntity<>(getService().getAllWith(baseFilterRequestDTO), HttpStatus.OK);
+        return new ResponseEntity<>(getService().getAllWithFilterAndPagination(baseFilterRequestDTO), HttpStatus.OK);
     }
 
     @PutMapping("{uuid}")

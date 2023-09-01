@@ -43,13 +43,34 @@ public class AppointmentMapper implements IBaseMapper<AppointmentEntity, Appoint
         dto.setCreationDate(entity.getCreationDate());
         dto.setUpdatedDate(entity.getUpdatedDate());
         dto.setDate(entity.getDate());
-        dto.setDoctor(doctorMapper.entityToDTO(entity.getDoctor()));
-        dto.setUser(userMapper.entityToDTO(entity.getUser()));
-        dto.setHospital(hospitalMapper.entityToDTO(entity.getHospital()));
-        dto.setHotel(hotelMapper.entityToDTO(entity.getHotel()));
-        dto.setFlight(flightMapper.entityToDTO(entity.getFlight()));
-        dto.setRoom(roomMapper.entityToDTO(entity.getRoom()));
-        dto.setSeat(seatMapper.entityToDTO(entity.getSeat()));
+        if (entity.getDoctor() == null)
+            dto.setDoctor(null);
+        else
+            dto.setDoctor(doctorMapper.entityToDTO(entity.getDoctor()));
+        if (entity.getUser() == null)
+            dto.setUser(null);
+        else
+            dto.setUser(userMapper.entityToDTO(entity.getUser()));
+        if (entity.getHospital() == null)
+            dto.setHospital(null);
+        else
+            dto.setHospital(hospitalMapper.entityToDTO(entity.getHospital()));
+        if (entity.getHotel() == null)
+            dto.setHotel(null);
+        else
+            dto.setHotel(hotelMapper.entityToDTO(entity.getHotel()));
+        if (entity.getFlight() == null)
+            dto.setFlight(null);
+        else
+            dto.setFlight(flightMapper.entityToDTO(entity.getFlight()));
+        if (entity.getRoom() == null)
+            dto.setRoom(null);
+        else
+            dto.setRoom(roomMapper.entityToDTO(entity.getRoom()));
+        if (entity.getSeat() == null)
+            dto.setSeat(null);
+        else
+            dto.setSeat(seatMapper.entityToDTO(entity.getSeat()));
 
         return dto;
     }
@@ -62,13 +83,34 @@ public class AppointmentMapper implements IBaseMapper<AppointmentEntity, Appoint
         entity.setCreationDate(dto.getCreationDate());
         entity.setUpdatedDate(dto.getUpdatedDate());
         entity.setDate(dto.getDate());
-        entity.setDoctor(doctorMapper.dtoToEntity(dto.getDoctor()));
-        entity.setUser(userMapper.dtoToEntity(dto.getUser()));
-        entity.setHospital(hospitalMapper.dtoToEntity(dto.getHospital()));
-        entity.setHotel(hotelMapper.dtoToEntity(dto.getHotel()));
-        entity.setFlight(flightMapper.dtoToEntity(dto.getFlight()));
-        entity.setRoom(roomMapper.dtoToEntity(dto.getRoom()));
-        entity.setSeat(seatMapper.dtoToEntity(dto.getSeat()));
+        if (dto.getDoctor() == null)
+            entity.setDoctor(null);
+        else
+            entity.setDoctor(doctorMapper.dtoToEntity(dto.getDoctor()));
+        if (dto.getUser() == null)
+            entity.setUser(null);
+        else
+            entity.setUser(userMapper.dtoToEntity(dto.getUser()));
+        if (dto.getHospital() == null)
+            entity.setHospital(null);
+        else
+            entity.setHospital(hospitalMapper.dtoToEntity(dto.getHospital()));
+        if (dto.getHotel() == null)
+            entity.setHotel(null);
+        else
+            entity.setHotel(hotelMapper.dtoToEntity(dto.getHotel()));
+        if (dto.getFlight() == null)
+            entity.setFlight(null);
+        else
+            entity.setFlight(flightMapper.dtoToEntity(dto.getFlight()));
+        if (dto.getRoom() == null)
+            entity.setRoom(null);
+        else
+            entity.setRoom(roomMapper.dtoToEntity(dto.getRoom()));
+        if (dto.getSeat() == null)
+            entity.setSeat(null);
+        else
+            entity.setSeat(seatMapper.dtoToEntity(dto.getSeat()));
 
         return entity;
     }
@@ -99,13 +141,34 @@ public class AppointmentMapper implements IBaseMapper<AppointmentEntity, Appoint
         entity.setCreationDate(requestDTO.getCreationDate());
         entity.setUpdatedDate(requestDTO.getUpdatedDate());
         entity.setDate(requestDTO.getDate());
-        entity.setDoctor(doctorMapper.requestDTOToEntity(requestDTO.getDoctor()));
-        entity.setUser(userMapper.requestDTOToEntity(requestDTO.getUser()));
-        entity.setHospital(hospitalMapper.requestDTOToEntity(requestDTO.getHospital()));
-        entity.setHotel(hotelMapper.requestDTOToEntity(requestDTO.getHotel()));
-        entity.setFlight(flightMapper.requestDTOToEntity(requestDTO.getFlight()));
-        entity.setRoom(roomMapper.requestDTOToEntity(requestDTO.getRoom()));
-        entity.setSeat(seatMapper.requestDTOToEntity(requestDTO.getSeat()));
+        if (requestDTO.getDoctor() == null)
+            entity.setDoctor(null);
+        else
+            entity.setDoctor(doctorMapper.requestDTOToEntity(requestDTO.getDoctor()));
+        if (requestDTO.getUser() == null)
+            entity.setUser(null);
+        else
+            entity.setUser(userMapper.requestDTOToEntity(requestDTO.getUser()));
+        if (requestDTO.getHospital() == null)
+            entity.setHospital(null);
+        else
+            entity.setHospital(hospitalMapper.requestDTOToEntity(requestDTO.getHospital()));
+        if (requestDTO.getHotel() == null)
+            entity.setHotel(null);
+        else
+            entity.setHotel(hotelMapper.requestDTOToEntity(requestDTO.getHotel()));
+        if (requestDTO.getFlight() == null)
+            entity.setFlight(null);
+        else
+            entity.setFlight(flightMapper.requestDTOToEntity(requestDTO.getFlight()));
+        if (requestDTO.getRoom() == null)
+            entity.setRoom(null);
+        else
+            entity.setRoom(roomMapper.requestDTOToEntity(requestDTO.getRoom()));
+        if (requestDTO.getSeat() == null)
+            entity.setSeat(null);
+        else
+            entity.setSeat(seatMapper.requestDTOToEntity(requestDTO.getSeat()));
 
 
         return entity;

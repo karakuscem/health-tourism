@@ -28,5 +28,5 @@ public class AirlineCompanyEntity extends BaseEntity {
 
     @ManyToOne
     @OnDelete(action = OnDeleteAction.SET_NULL)
-    private BankAccountEntity bankAccount = null;
+    private BankAccountEntity bankAccount;
 }

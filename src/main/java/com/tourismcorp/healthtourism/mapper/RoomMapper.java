@@ -30,7 +30,7 @@ public class RoomMapper implements IBaseMapper<RoomEntity, RoomDTO, RoomRequestD
         roomDTO.setUpdatedDate(entity.getUpdatedDate());
         roomDTO.setId(entity.getId());
         roomDTO.setRoomNumber(entity.getRoomNumber());
-        roomDTO.setExitDate(entity.getExitDate());
+        roomDTO.setReservationDate(entity.getReservationDate());
         roomDTO.setPrice(entity.getPrice());
         roomDTO.setIsReserved(entity.getIsReserved());
 
@@ -45,7 +45,7 @@ public class RoomMapper implements IBaseMapper<RoomEntity, RoomDTO, RoomRequestD
         roomEntity.setUpdatedDate(dto.getUpdatedDate());
         roomEntity.setId(dto.getId());
         roomEntity.setRoomNumber(dto.getRoomNumber());
-        roomEntity.setExitDate(dto.getExitDate());
+        roomEntity.setReservationDate(dto.getReservationDate());
         roomEntity.setPrice(dto.getPrice());
         roomEntity.setIsReserved(dto.getIsReserved());
 
@@ -80,7 +80,7 @@ public class RoomMapper implements IBaseMapper<RoomEntity, RoomDTO, RoomRequestD
         roomEntity.setUpdatedDate(requestDTO.getUpdatedDate());
         roomEntity.setId(requestDTO.getId());
         roomEntity.setRoomNumber(requestDTO.getRoomNumber());
-        roomEntity.setExitDate(requestDTO.getExitDate());
+        roomEntity.setReservationDate(requestDTO.getReservationDate());
         roomEntity.setPrice(requestDTO.getPrice());
         roomEntity.setIsReserved(requestDTO.getIsReserved());
 
@@ -103,8 +103,8 @@ public class RoomMapper implements IBaseMapper<RoomEntity, RoomDTO, RoomRequestD
     public RoomEntity requestDTOToExistEntity(RoomRequestDTO requestDTO, RoomEntity entity) {
         if(requestDTO.getRoomNumber() != null)
             entity.setRoomNumber(requestDTO.getRoomNumber());
-        if(requestDTO.getExitDate() != null)
-            entity.setExitDate(requestDTO.getExitDate());
+        if(requestDTO.getReservationDate() != null)
+            entity.setReservationDate(requestDTO.getReservationDate());
         if(requestDTO.getPrice() != null)
             entity.setPrice(requestDTO.getPrice());
         if(requestDTO.getIsReserved() != null)

@@ -13,7 +13,7 @@ public class BankAccountEntity extends BaseEntity {
 
     @Column
     private String bankName;
-    @Column
+    @Column(unique = true)
     private String accountNumber;
     @Column
     private BigDecimal balance;

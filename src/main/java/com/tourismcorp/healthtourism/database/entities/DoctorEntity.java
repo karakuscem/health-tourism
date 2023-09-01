@@ -32,6 +32,10 @@ public class DoctorEntity extends BaseEntity {
     @Column
     private String lastName;
 
+    @OneToMany
+    @JoinColumn(name = "doctor_id")
+    private List<AppointmentEntity> appointments;
+
     @ManyToMany(fetch = FetchType.LAZY)
     @EqualsAndHashCode.Exclude
     @ToString.Exclude

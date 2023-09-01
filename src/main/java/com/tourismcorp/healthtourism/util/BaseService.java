@@ -70,7 +70,7 @@ public abstract class BaseService<
         return getMapper().entityListToDTOList(entities);
     }
 
-    public Page<DTO> getAllWith(BaseFilterRequestDTO baseFilterRequestDTO) {
+    public Page<DTO> getAllWithFilterAndPagination(BaseFilterRequestDTO baseFilterRequestDTO) {
         Pageable pageable;
         if (baseFilterRequestDTO.getSortDTO() != null) {
             if (baseFilterRequestDTO.getSortDTO().getDirectionEnum() == Sort.Direction.ASC) {

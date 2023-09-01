@@ -15,5 +15,5 @@ public class RoomDTO extends BaseDTO {
 
     private Boolean isReserved;
 
-    private Date exitDate;
+    private Date reservationDate;
 }
