@@ -46,6 +46,8 @@ public class SecurityConfiguration {
             "/api/public/**",
             "/api/public/authenticate",
             "/actuator/*",
+            "/role",
+            "/role/**",
             "/swagger-ui/**",
             "airline-company/get-all-filter",
             "airline-company",
@@ -76,18 +78,34 @@ public class SecurityConfiguration {
     };
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.headers(Customizer.withDefaults());
-        http.csrf(Customizer.withDefaults())
-                .cors(Customizer.withDefaults())
-                .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers(AUTH_WHITELIST).permitAll()
-                        .requestMatchers(USER_AUTH_WHITELIST).hasRole("user")
-                        .requestMatchers(ADMIN_AUTH_WHITELIST).hasRole("admin")
-                        .anyRequest().authenticated()
-                )
+        System.out.println("security");
+        http.headers().frameOptions().disable();
+        http.csrf().disable()
+                .httpBasic().disable()
+                .cors()
+                .configurationSource(request -> {
+                    CorsConfiguration configuration = new CorsConfiguration();
+                    configuration.setAllowedOrigins(List.of("*"));
+                    configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
+                    configuration.setAllowedHeaders(List.of("*"));
+                    configuration.setExposedHeaders(List.of("Content-Disposition"));
+                    return configuration;
+                }).and()
+                .authorizeHttpRequests()
+                .requestMatchers(AUTH_WHITELIST).permitAll()
+                .requestMatchers(USER_AUTH_WHITELIST).hasRole("user")
+                .requestMatchers(ADMIN_AUTH_WHITELIST).hasRole("admin")
+                .and()
+
                 .userDetailsService(securityService)
-                .exceptionHandling(Customizer.withDefaults())
-                .sessionManagement(session -> session.maximumSessions(1));
+                .exceptionHandling()
+                .authenticationEntryPoint(
+                        (request, response, authException) ->
+                                response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized")
+                )
+                .and()
+                .sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
 
         http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
